@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LogicFlowEngine.csproj" />
+    <ProjectReference Include="..\LogicFlowEngine\LogicFlowEngine.csproj" />
   </ItemGroup>
 
 </Project>

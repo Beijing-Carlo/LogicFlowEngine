@@ -1,12 +1,12 @@
-﻿{
+{
   "Nodes": [
     {
       "Id": 223,
       "TypeId": "Toggle",
       "Name": "Toggle",
-      "X": -5465.01034084406,
-      "Y": -1766.405735161314,
-      "ToggleValue": true,
+      "X": -5429.9360598717085,
+      "Y": -1656.8265611122176,
+      "ToggleValue": false,
       "InputPortNames": [],
       "OutputPortNames": [
         "C0"
@@ -16,8 +16,8 @@
       "Id": 224,
       "TypeId": "Toggle",
       "Name": "Toggle",
-      "X": -5451.157480097279,
-      "Y": -1641.0416228698316,
+      "X": -5424.355191749027,
+      "Y": -1526.7355958926785,
       "ToggleValue": true,
       "InputPortNames": [],
       "OutputPortNames": [
@@ -28,8 +28,8 @@
       "Id": 225,
       "TypeId": "Toggle",
       "Name": "Toggle",
-      "X": -5459.764044728827,
-      "Y": -1501.7026356376418,
+      "X": -5424.689763756475,
+      "Y": -1390.9417483565312,
       "ToggleValue": true,
       "InputPortNames": [],
       "OutputPortNames": [
@@ -40,9 +40,9 @@
       "Id": 226,
       "TypeId": "Toggle",
       "Name": "Toggle",
-      "X": -5628.064020200769,
-      "Y": -1639.2353106233702,
-      "ToggleValue": false,
+      "X": -5592.989739228417,
+      "Y": -1528.4744233422596,
+      "ToggleValue": true,
       "InputPortNames": [],
       "OutputPortNames": [
         "A1"
@@ -52,8 +52,8 @@
       "Id": 227,
       "TypeId": "Toggle",
       "Name": "Toggle",
-      "X": -5631.041472572564,
-      "Y": -1501.0785694161546,
+      "X": -5595.967191600213,
+      "Y": -1390.317682135044,
       "ToggleValue": true,
       "InputPortNames": [],
       "OutputPortNames": [
@@ -64,8 +64,8 @@
       "Id": 228,
       "TypeId": "Toggle",
       "Name": "Toggle",
-      "X": -5800.852189404628,
-      "Y": -1638.8536562033032,
+      "X": -5765.7779084322765,
+      "Y": -1528.0927689221926,
       "ToggleValue": true,
       "InputPortNames": [],
       "OutputPortNames": [
@@ -76,9 +76,9 @@
       "Id": 229,
       "TypeId": "Toggle",
       "Name": "Toggle",
-      "X": -5802.907905636898,
-      "Y": -1503.1861457858215,
-      "ToggleValue": false,
+      "X": -5767.833624664547,
+      "Y": -1392.4252585047109,
+      "ToggleValue": true,
       "InputPortNames": [],
       "OutputPortNames": [
         "B2"
@@ -88,9 +88,9 @@
       "Id": 230,
       "TypeId": "Toggle",
       "Name": "Toggle",
-      "X": -5967.897312867922,
-      "Y": -1637.083748792611,
-      "ToggleValue": false,
+      "X": -5932.82303189557,
+      "Y": -1526.3228615115004,
+      "ToggleValue": true,
       "InputPortNames": [],
       "OutputPortNames": [
         "A3"
@@ -100,9 +100,9 @@
       "Id": 231,
       "TypeId": "Toggle",
       "Name": "Toggle",
-      "X": -5972.010380721666,
-      "Y": -1503.923353320239,
-      "ToggleValue": false,
+      "X": -5936.936099749314,
+      "Y": -1393.1624660391283,
+      "ToggleValue": true,
       "InputPortNames": [],
       "OutputPortNames": [
         "B3"
@@ -112,9 +112,9 @@
       "Id": 232,
       "TypeId": "Toggle",
       "Name": "Toggle",
-      "X": -5463.039124858774,
-      "Y": -1890.6508174876085,
-      "ToggleValue": false,
+      "X": -5427.964843886422,
+      "Y": -1779.8899302064979,
+      "ToggleValue": true,
       "InputPortNames": [],
       "OutputPortNames": [
         "Signal"
@@ -124,8 +124,8 @@
       "Id": 412,
       "TypeId": "4-Bit Adder (S)",
       "Name": "4-Bit Adder (S)",
-      "X": -5135.557050717584,
-      "Y": -1892.9678404506606,
+      "X": -5100.482769745233,
+      "Y": -1782.20695316955,
       "ToggleValue": null,
       "InputPortNames": [
         "Signal",
@@ -152,8 +152,8 @@
       "Id": 413,
       "TypeId": "Display",
       "Name": "Display",
-      "X": -3821.839785627928,
-      "Y": -1674.9287615814026,
+      "X": -3921.7139142596016,
+      "Y": -1840.769114034404,
       "ToggleValue": null,
       "InputPortNames": [
         "In"
@@ -166,8 +166,8 @@
       "Id": 414,
       "TypeId": "Display",
       "Name": "Display",
-      "X": -3997.1584535517895,
-      "Y": -1674.25999985624,
+      "X": -4097.032582183463,
+      "Y": -1840.1003523092415,
       "ToggleValue": null,
       "InputPortNames": [
         "In"
@@ -180,8 +180,8 @@
       "Id": 415,
       "TypeId": "Display",
       "Name": "Display",
-      "X": -4166.381778127217,
-      "Y": -1674.3104454625893,
+      "X": -4266.255906758891,
+      "Y": -1840.1507979155908,
       "ToggleValue": null,
       "InputPortNames": [
         "In"
@@ -194,8 +194,8 @@
       "Id": 416,
       "TypeId": "Display",
       "Name": "Display",
-      "X": -4336.7180821695465,
-      "Y": -1674.3608910689386,
+      "X": -4436.59221080122,
+      "Y": -1840.2012435219401,
       "ToggleValue": null,
       "InputPortNames": [
         "In"
@@ -208,14 +208,84 @@
       "Id": 417,
       "TypeId": "Display",
       "Name": "Display",
-      "X": -4505.941406744973,
-      "Y": -1674.4113366752879,
+      "X": -4605.815535376647,
+      "Y": -1840.2516891282894,
       "ToggleValue": null,
       "InputPortNames": [
         "In"
       ],
       "OutputPortNames": [
         "Out"
+      ]
+    },
+    {
+      "Id": 418,
+      "TypeId": "IO",
+      "Name": "IO",
+      "X": -4819.131176718446,
+      "Y": -1836.255861931111,
+      "ToggleValue": null,
+      "InputPortNames": [
+        "In"
+      ],
+      "OutputPortNames": [
+        "1"
+      ]
+    },
+    {
+      "Id": 419,
+      "TypeId": "IO",
+      "Name": "IO",
+      "X": -4817.737849439555,
+      "Y": -1771.7811537800296,
+      "ToggleValue": null,
+      "InputPortNames": [
+        "In"
+      ],
+      "OutputPortNames": [
+        "2"
+      ]
+    },
+    {
+      "Id": 420,
+      "TypeId": "IO",
+      "Name": "IO",
+      "X": -4817.078026589413,
+      "Y": -1706.5729412002015,
+      "ToggleValue": null,
+      "InputPortNames": [
+        "In"
+      ],
+      "OutputPortNames": [
+        "4"
+      ]
+    },
+    {
+      "Id": 421,
+      "TypeId": "IO",
+      "Name": "IO",
+      "X": -4815.684699310523,
+      "Y": -1642.8317374778667,
+      "ToggleValue": null,
+      "InputPortNames": [
+        "In"
+      ],
+      "OutputPortNames": [
+        "8"
+      ]
+    },
+    {
+      "Id": 422,
+      "TypeId": "IO",
+      "Name": "IO",
+      "X": -4815.758380889125,
+      "Y": -1578.3570293267853,
+      "ToggleValue": null,
+      "InputPortNames": [
+        "In"
+      ],
+      "OutputPortNames": [
+        "16"
       ]
     }
   ],
@@ -227,49 +297,109 @@
       "ToPortIndex": 1
     },
     {
-      "FromNodeId": 224,
-      "FromPortIndex": 0,
-      "ToNodeId": 412,
-      "ToPortIndex": 2
-    },
-    {
-      "FromNodeId": 225,
-      "FromPortIndex": 0,
-      "ToNodeId": 412,
-      "ToPortIndex": 3
-    },
-    {
       "FromNodeId": 232,
       "FromPortIndex": 0,
       "ToNodeId": 412,
       "ToPortIndex": 0
     },
     {
+      "FromNodeId": 412,
+      "FromPortIndex": 1,
+      "ToNodeId": 418,
+      "ToPortIndex": 0
+    },
+    {
+      "FromNodeId": 412,
+      "FromPortIndex": 2,
+      "ToNodeId": 419,
+      "ToPortIndex": 0
+    },
+    {
+      "FromNodeId": 412,
+      "FromPortIndex": 3,
+      "ToNodeId": 420,
+      "ToPortIndex": 0
+    },
+    {
+      "FromNodeId": 412,
+      "FromPortIndex": 4,
+      "ToNodeId": 421,
+      "ToPortIndex": 0
+    },
+    {
+      "FromNodeId": 412,
+      "FromPortIndex": 5,
+      "ToNodeId": 422,
+      "ToPortIndex": 0
+    },
+    {
+      "FromNodeId": 418,
+      "FromPortIndex": 0,
+      "ToNodeId": 413,
+      "ToPortIndex": 0
+    },
+    {
+      "FromNodeId": 419,
+      "FromPortIndex": 0,
+      "ToNodeId": 414,
+      "ToPortIndex": 0
+    },
+    {
+      "FromNodeId": 420,
+      "FromPortIndex": 0,
+      "ToNodeId": 415,
+      "ToPortIndex": 0
+    },
+    {
+      "FromNodeId": 421,
+      "FromPortIndex": 0,
+      "ToNodeId": 416,
+      "ToPortIndex": 0
+    },
+    {
+      "FromNodeId": 422,
+      "FromPortIndex": 0,
+      "ToNodeId": 417,
+      "ToPortIndex": 0
+    },
+    {
+      "FromNodeId": 224,
+      "FromPortIndex": 0,
+      "ToNodeId": 412,
+      "ToPortIndex": 2
+    },
+    {
       "FromNodeId": 226,
       "FromPortIndex": 0,
       "ToNodeId": 412,
-      "ToPortIndex": 4
-    },
-    {
-      "FromNodeId": 227,
-      "FromPortIndex": 0,
-      "ToNodeId": 412,
-      "ToPortIndex": 5
+      "ToPortIndex": 3
     },
     {
       "FromNodeId": 228,
       "FromPortIndex": 0,
       "ToNodeId": 412,
+      "ToPortIndex": 4
+    },
+    {
+      "FromNodeId": 230,
+      "FromPortIndex": 0,
+      "ToNodeId": 412,
+      "ToPortIndex": 5
+    },
+    {
+      "FromNodeId": 225,
+      "FromPortIndex": 0,
+      "ToNodeId": 412,
       "ToPortIndex": 6
     },
     {
-      "FromNodeId": 229,
+      "FromNodeId": 227,
       "FromPortIndex": 0,
       "ToNodeId": 412,
       "ToPortIndex": 7
     },
     {
-      "FromNodeId": 230,
+      "FromNodeId": 229,
       "FromPortIndex": 0,
       "ToNodeId": 412,
       "ToPortIndex": 8
@@ -279,36 +409,6 @@
       "FromPortIndex": 0,
       "ToNodeId": 412,
       "ToPortIndex": 9
-    },
-    {
-      "FromNodeId": 412,
-      "FromPortIndex": 1,
-      "ToNodeId": 413,
-      "ToPortIndex": 0
-    },
-    {
-      "FromNodeId": 412,
-      "FromPortIndex": 2,
-      "ToNodeId": 414,
-      "ToPortIndex": 0
-    },
-    {
-      "FromNodeId": 412,
-      "FromPortIndex": 3,
-      "ToNodeId": 415,
-      "ToPortIndex": 0
-    },
-    {
-      "FromNodeId": 412,
-      "FromPortIndex": 4,
-      "ToNodeId": 416,
-      "ToPortIndex": 0
-    },
-    {
-      "FromNodeId": 412,
-      "FromPortIndex": 5,
-      "ToNodeId": 417,
-      "ToPortIndex": 0
     }
   ],
   "CompositeDefinitions": [
