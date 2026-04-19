@@ -1,0 +1,110 @@
+@inject GraphStateService _State
+@inject SimulationService _Sim
+@inject GraphSerializer   _Serializer
+@inject IJSRuntime        _JS
+@implements IDisposable
+
+<div class="toolbar">
+    <span class="toolbar-title">⚡ LogicFlow</span>
+    <div class="toolbar-sep"></div>
+
+    @if (_State.IsEditingComposite)
+    {
+        <button class="btn btn-run"
+                title="Save composite changes and return to parent graph"
+                @onclick="SaveAndCloseComposite">← Save &amp; Close @_State.EditingCompositeName</button>
+    }
+    else
+    {
+        <button class="btn"
+                title="Delete selected nodes (Del)"
+                disabled="@(!_State.SelectedNodeIds.Any())"
+                @onclick="() => _State.RemoveSelectedNodes()">🗑 Delete</button>
+
+        <div class="toolbar-sep"></div>
+
+        <button class="btn"
+                title="Copy selected nodes (Ctrl+C)"
+                disabled="@(!_State.SelectedNodeIds.Any())"
+                @onclick="() => _State.Copy()">Copy</button>
+
+        <button class="btn"
+                title="Paste copied nodes (Ctrl+V)"
+                @onclick="() => _State.Paste()">Paste</button>
+
+        <div class="toolbar-sep"></div>
+
+        <button class="btn"
+                title="Group selected nodes into a reusable composite"
+                disabled="@(_State.SelectedNodeIds.Count < 2)"
+                @onclick="CreateComposite">📦 Group</button>
+
+        <div class="toolbar-sep"></div>
+
+        <button class="btn" title="Save to browser" @onclick="SaveToBrowserAsync">💾 Save</button>
+
+        <button class="btn" title="Download script as JSON file" @onclick="DownloadAsync">⬇ Download</button>
+
+        @* Hidden file input — triggered programmatically *@
+        <InputFile id="lfe-load-input" OnChange="LoadAsync" style="display:none" accept=".json" />
+        <button class="btn"
+                title="Load script from JSON file"
+                @onclick='() => _JS.InvokeVoidAsync("triggerClick", "lfe-load-input")'>📂 Load</button>
+
+        <div class="toolbar-sep"></div>
+
+        <button class="btn @(_Sim.IsRunning ? "btn-stop" : "btn-run")"
+                @onclick="ToggleSimulation">
+            @(_Sim.IsRunning ? "■ Stop" : "▶ Run")
+        </button>
+    }
+</div>
+
+@code {
+    protected override void OnInitialized()
+        => _State.OnStateChanged += HandleStateChanged;
+
+    private void HandleStateChanged() => InvokeAsync(StateHasChanged);
+
+    public void Dispose()
+        => _State.OnStateChanged -= HandleStateChanged;
+
+    private async Task SaveToBrowserAsync()
+    {
+        await _Serializer.SaveToBrowserAsync(_JS, _State);
+    }
+
+    private async Task DownloadAsync()
+    {
+        var json = _Serializer.Serialize(_State);
+        await _JS.InvokeVoidAsync("downloadFile", "script.json", json);
+    }
+
+    private async Task LoadAsync(InputFileChangeEventArgs e)
+    {
+        using var stream = e.File.OpenReadStream(maxAllowedSize: 512 * 1024);
+        using var reader = new System.IO.StreamReader(stream);
+        var json         = await reader.ReadToEndAsync();
+        _Serializer.Deserialize(json, _State, _Sim);
+    }
+
+    private void ToggleSimulation()
+    {
+        if (_Sim.IsRunning) _Sim.Stop();
+        else                _Sim.Start();
+        StateHasChanged();
+    }
+
+    private async Task CreateComposite()
+    {
+        var name = await _JS.InvokeAsync<string>("prompt", "Composite node name:");
+        if (string.IsNullOrWhiteSpace(name)) return;
+        _State.CreateCompositeFromSelection(name);
+    }
+
+    private async Task SaveAndCloseComposite()
+    {
+        _State.SaveAndCloseComposite();
+        await _Serializer.SaveToBrowserAsync(_JS, _State);
+    }
+}

@@ -1,0 +1,34 @@
+@page "/"
+@inject GraphSerializer   _Serializer
+@inject GraphStateService _State
+@inject SimulationService _Sim
+@inject IJSRuntime        _JS
+
+<div class="ide-layout">
+    <Toolbar />
+    <div class="ide-body">
+        <NodePalette />
+        <GraphCanvas />
+        <SimulationLog />
+    </div>
+</div>
+
+@code {
+    private bool _loaded;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender && !_loaded)
+        {
+            _loaded = true;
+            try
+            {
+                await _Serializer.LoadFromBrowserAsync(_JS, _State, _Sim);
+            }
+            catch (Exception ex)
+            {
+                _State.AddLog($"Failed to load saved graph: {ex.Message}");
+            }
+        }
+    }
+}

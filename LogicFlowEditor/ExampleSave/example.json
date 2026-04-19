@@ -1,0 +1,4296 @@
+﻿{
+  "Nodes": [
+    {
+      "Id": 223,
+      "TypeId": "Toggle",
+      "Name": "Toggle",
+      "X": -5465.01034084406,
+      "Y": -1766.405735161314,
+      "ToggleValue": true,
+      "InputPortNames": [],
+      "OutputPortNames": [
+        "C0"
+      ]
+    },
+    {
+      "Id": 224,
+      "TypeId": "Toggle",
+      "Name": "Toggle",
+      "X": -5451.157480097279,
+      "Y": -1641.0416228698316,
+      "ToggleValue": true,
+      "InputPortNames": [],
+      "OutputPortNames": [
+        "A0"
+      ]
+    },
+    {
+      "Id": 225,
+      "TypeId": "Toggle",
+      "Name": "Toggle",
+      "X": -5459.764044728827,
+      "Y": -1501.7026356376418,
+      "ToggleValue": true,
+      "InputPortNames": [],
+      "OutputPortNames": [
+        "B0"
+      ]
+    },
+    {
+      "Id": 226,
+      "TypeId": "Toggle",
+      "Name": "Toggle",
+      "X": -5628.064020200769,
+      "Y": -1639.2353106233702,
+      "ToggleValue": false,
+      "InputPortNames": [],
+      "OutputPortNames": [
+        "A1"
+      ]
+    },
+    {
+      "Id": 227,
+      "TypeId": "Toggle",
+      "Name": "Toggle",
+      "X": -5631.041472572564,
+      "Y": -1501.0785694161546,
+      "ToggleValue": true,
+      "InputPortNames": [],
+      "OutputPortNames": [
+        "B1"
+      ]
+    },
+    {
+      "Id": 228,
+      "TypeId": "Toggle",
+      "Name": "Toggle",
+      "X": -5800.852189404628,
+      "Y": -1638.8536562033032,
+      "ToggleValue": true,
+      "InputPortNames": [],
+      "OutputPortNames": [
+        "A2"
+      ]
+    },
+    {
+      "Id": 229,
+      "TypeId": "Toggle",
+      "Name": "Toggle",
+      "X": -5802.907905636898,
+      "Y": -1503.1861457858215,
+      "ToggleValue": false,
+      "InputPortNames": [],
+      "OutputPortNames": [
+        "B2"
+      ]
+    },
+    {
+      "Id": 230,
+      "TypeId": "Toggle",
+      "Name": "Toggle",
+      "X": -5967.897312867922,
+      "Y": -1637.083748792611,
+      "ToggleValue": false,
+      "InputPortNames": [],
+      "OutputPortNames": [
+        "A3"
+      ]
+    },
+    {
+      "Id": 231,
+      "TypeId": "Toggle",
+      "Name": "Toggle",
+      "X": -5972.010380721666,
+      "Y": -1503.923353320239,
+      "ToggleValue": false,
+      "InputPortNames": [],
+      "OutputPortNames": [
+        "B3"
+      ]
+    },
+    {
+      "Id": 232,
+      "TypeId": "Toggle",
+      "Name": "Toggle",
+      "X": -5463.039124858774,
+      "Y": -1890.6508174876085,
+      "ToggleValue": false,
+      "InputPortNames": [],
+      "OutputPortNames": [
+        "Signal"
+      ]
+    },
+    {
+      "Id": 412,
+      "TypeId": "4-Bit Adder (S)",
+      "Name": "4-Bit Adder (S)",
+      "X": -5135.557050717584,
+      "Y": -1892.9678404506606,
+      "ToggleValue": null,
+      "InputPortNames": [
+        "Signal",
+        "C0",
+        "A0",
+        "A1",
+        "A2",
+        "A3",
+        "B0",
+        "B1",
+        "B2",
+        "B3"
+      ],
+      "OutputPortNames": [
+        "Signal",
+        "S0",
+        "S1",
+        "S2",
+        "S3",
+        "C4"
+      ]
+    },
+    {
+      "Id": 413,
+      "TypeId": "Display",
+      "Name": "Display",
+      "X": -3821.839785627928,
+      "Y": -1674.9287615814026,
+      "ToggleValue": null,
+      "InputPortNames": [
+        "In"
+      ],
+      "OutputPortNames": [
+        "Out"
+      ]
+    },
+    {
+      "Id": 414,
+      "TypeId": "Display",
+      "Name": "Display",
+      "X": -3997.1584535517895,
+      "Y": -1674.25999985624,
+      "ToggleValue": null,
+      "InputPortNames": [
+        "In"
+      ],
+      "OutputPortNames": [
+        "Out"
+      ]
+    },
+    {
+      "Id": 415,
+      "TypeId": "Display",
+      "Name": "Display",
+      "X": -4166.381778127217,
+      "Y": -1674.3104454625893,
+      "ToggleValue": null,
+      "InputPortNames": [
+        "In"
+      ],
+      "OutputPortNames": [
+        "Out"
+      ]
+    },
+    {
+      "Id": 416,
+      "TypeId": "Display",
+      "Name": "Display",
+      "X": -4336.7180821695465,
+      "Y": -1674.3608910689386,
+      "ToggleValue": null,
+      "InputPortNames": [
+        "In"
+      ],
+      "OutputPortNames": [
+        "Out"
+      ]
+    },
+    {
+      "Id": 417,
+      "TypeId": "Display",
+      "Name": "Display",
+      "X": -4505.941406744973,
+      "Y": -1674.4113366752879,
+      "ToggleValue": null,
+      "InputPortNames": [
+        "In"
+      ],
+      "OutputPortNames": [
+        "Out"
+      ]
+    }
+  ],
+  "Wires": [
+    {
+      "FromNodeId": 223,
+      "FromPortIndex": 0,
+      "ToNodeId": 412,
+      "ToPortIndex": 1
+    },
+    {
+      "FromNodeId": 224,
+      "FromPortIndex": 0,
+      "ToNodeId": 412,
+      "ToPortIndex": 2
+    },
+    {
+      "FromNodeId": 225,
+      "FromPortIndex": 0,
+      "ToNodeId": 412,
+      "ToPortIndex": 3
+    },
+    {
+      "FromNodeId": 232,
+      "FromPortIndex": 0,
+      "ToNodeId": 412,
+      "ToPortIndex": 0
+    },
+    {
+      "FromNodeId": 226,
+      "FromPortIndex": 0,
+      "ToNodeId": 412,
+      "ToPortIndex": 4
+    },
+    {
+      "FromNodeId": 227,
+      "FromPortIndex": 0,
+      "ToNodeId": 412,
+      "ToPortIndex": 5
+    },
+    {
+      "FromNodeId": 228,
+      "FromPortIndex": 0,
+      "ToNodeId": 412,
+      "ToPortIndex": 6
+    },
+    {
+      "FromNodeId": 229,
+      "FromPortIndex": 0,
+      "ToNodeId": 412,
+      "ToPortIndex": 7
+    },
+    {
+      "FromNodeId": 230,
+      "FromPortIndex": 0,
+      "ToNodeId": 412,
+      "ToPortIndex": 8
+    },
+    {
+      "FromNodeId": 231,
+      "FromPortIndex": 0,
+      "ToNodeId": 412,
+      "ToPortIndex": 9
+    },
+    {
+      "FromNodeId": 412,
+      "FromPortIndex": 1,
+      "ToNodeId": 413,
+      "ToPortIndex": 0
+    },
+    {
+      "FromNodeId": 412,
+      "FromPortIndex": 2,
+      "ToNodeId": 414,
+      "ToPortIndex": 0
+    },
+    {
+      "FromNodeId": 412,
+      "FromPortIndex": 3,
+      "ToNodeId": 415,
+      "ToPortIndex": 0
+    },
+    {
+      "FromNodeId": 412,
+      "FromPortIndex": 4,
+      "ToNodeId": 416,
+      "ToPortIndex": 0
+    },
+    {
+      "FromNodeId": 412,
+      "FromPortIndex": 5,
+      "ToNodeId": 417,
+      "ToPortIndex": 0
+    }
+  ],
+  "CompositeDefinitions": [
+    {
+      "TypeId": "NAND",
+      "NodeTypeIds": [
+        "AND",
+        "NOT"
+      ],
+      "NodeNames": [
+        "AND",
+        "NOT"
+      ],
+      "InputPortNames": [
+        [
+          "A",
+          "B"
+        ],
+        [
+          "A"
+        ]
+      ],
+      "OutputPortNames": [
+        [
+          "Result"
+        ],
+        [
+          "Result"
+        ]
+      ],
+      "NodePositionsX": [
+        396,
+        614
+      ],
+      "NodePositionsY": [
+        207,
+        211
+      ],
+      "Wires": [
+        {
+          "FromNodeIndex": 0,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 1,
+          "ToPortIndex": 0
+        }
+      ],
+      "ExposedInputs": [
+        {
+          "NodeIndex": 0,
+          "PortIndex": 0,
+          "Name": "A"
+        },
+        {
+          "NodeIndex": 0,
+          "PortIndex": 1,
+          "Name": "B"
+        }
+      ],
+      "ExposedOutputs": [
+        {
+          "NodeIndex": 1,
+          "PortIndex": 0,
+          "Name": "Result"
+        }
+      ]
+    },
+    {
+      "TypeId": "NOR",
+      "NodeTypeIds": [
+        "OR",
+        "NOT"
+      ],
+      "NodeNames": [
+        "OR",
+        "NOT"
+      ],
+      "InputPortNames": [
+        [
+          "A",
+          "B"
+        ],
+        [
+          "A"
+        ]
+      ],
+      "OutputPortNames": [
+        [
+          "Result"
+        ],
+        [
+          "Result"
+        ]
+      ],
+      "NodePositionsX": [
+        377,
+        591
+      ],
+      "NodePositionsY": [
+        165,
+        166
+      ],
+      "Wires": [
+        {
+          "FromNodeIndex": 0,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 1,
+          "ToPortIndex": 0
+        }
+      ],
+      "ExposedInputs": [
+        {
+          "NodeIndex": 0,
+          "PortIndex": 0,
+          "Name": "A"
+        },
+        {
+          "NodeIndex": 0,
+          "PortIndex": 1,
+          "Name": "B"
+        }
+      ],
+      "ExposedOutputs": [
+        {
+          "NodeIndex": 1,
+          "PortIndex": 0,
+          "Name": "Result"
+        }
+      ]
+    },
+    {
+      "TypeId": "SR Latch",
+      "NodeTypeIds": [
+        "IO",
+        "NOR",
+        "NOR",
+        "IO"
+      ],
+      "NodeNames": [
+        "IO",
+        "NOR",
+        "NOR",
+        "IO"
+      ],
+      "InputPortNames": [
+        [
+          "In"
+        ],
+        [
+          "R",
+          "1"
+        ],
+        [
+          "0",
+          "S"
+        ],
+        [
+          "In"
+        ]
+      ],
+      "OutputPortNames": [
+        [
+          "Q"
+        ],
+        [
+          "Q"
+        ],
+        [
+          "!Q"
+        ],
+        [
+          "!Q"
+        ]
+      ],
+      "NodePositionsX": [
+        576,
+        322,
+        324,
+        585
+      ],
+      "NodePositionsY": [
+        94,
+        84,
+        262,
+        262
+      ],
+      "Wires": [
+        {
+          "FromNodeIndex": 1,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 2,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 2,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 1,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 1,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 0,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 2,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 3,
+          "ToPortIndex": 0
+        }
+      ],
+      "ExposedInputs": [
+        {
+          "NodeIndex": 1,
+          "PortIndex": 0,
+          "Name": "R"
+        },
+        {
+          "NodeIndex": 2,
+          "PortIndex": 1,
+          "Name": "S"
+        }
+      ],
+      "ExposedOutputs": [
+        {
+          "NodeIndex": 0,
+          "PortIndex": 0,
+          "Name": "Q"
+        },
+        {
+          "NodeIndex": 3,
+          "PortIndex": 0,
+          "Name": "!Q"
+        }
+      ]
+    },
+    {
+      "TypeId": "AND (4)",
+      "NodeTypeIds": [
+        "AND",
+        "AND",
+        "AND"
+      ],
+      "NodeNames": [
+        "AND",
+        "AND",
+        "AND"
+      ],
+      "InputPortNames": [
+        [
+          "A",
+          "B"
+        ],
+        [
+          "C",
+          "D"
+        ],
+        [
+          "A",
+          "B"
+        ]
+      ],
+      "OutputPortNames": [
+        [
+          "Result"
+        ],
+        [
+          "Result"
+        ],
+        [
+          "Result"
+        ]
+      ],
+      "NodePositionsX": [
+        610.1203069270201,
+        609.4592435884798,
+        819.0454717142155
+      ],
+      "NodePositionsY": [
+        -392.105830011484,
+        -300.78370333440347,
+        -358.38674144451846
+      ],
+      "Wires": [
+        {
+          "FromNodeIndex": 0,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 2,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 1,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 2,
+          "ToPortIndex": 1
+        }
+      ],
+      "ExposedInputs": [
+        {
+          "NodeIndex": 0,
+          "PortIndex": 0,
+          "Name": "A"
+        },
+        {
+          "NodeIndex": 0,
+          "PortIndex": 1,
+          "Name": "B"
+        },
+        {
+          "NodeIndex": 1,
+          "PortIndex": 0,
+          "Name": "C"
+        },
+        {
+          "NodeIndex": 1,
+          "PortIndex": 1,
+          "Name": "D"
+        }
+      ],
+      "ExposedOutputs": [
+        {
+          "NodeIndex": 2,
+          "PortIndex": 0,
+          "Name": "Result"
+        }
+      ]
+    },
+    {
+      "TypeId": "XOR",
+      "NodeTypeIds": [
+        "OR",
+        "OR",
+        "NAND",
+        "IO",
+        "NOT",
+        "NOT",
+        "IO"
+      ],
+      "NodeNames": [
+        "OR",
+        "OR",
+        "NAND",
+        "IO",
+        "NOT",
+        "NOT",
+        "IO"
+      ],
+      "InputPortNames": [
+        [
+          "A",
+          "B"
+        ],
+        [
+          "A",
+          "B"
+        ],
+        [
+          "A",
+          "B"
+        ],
+        [
+          "A"
+        ],
+        [
+          "A"
+        ],
+        [
+          "A"
+        ],
+        [
+          "B"
+        ]
+      ],
+      "OutputPortNames": [
+        [
+          "Result"
+        ],
+        [
+          "Result"
+        ],
+        [
+          "Y"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Result"
+        ],
+        [
+          "Result"
+        ],
+        [
+          "Out"
+        ]
+      ],
+      "NodePositionsX": [
+        -389.34986211601915,
+        -386.1133577759418,
+        -100.22214106910337,
+        -814.3889413959383,
+        -605.1168181211802,
+        -603.1665224018512,
+        -812.4604697268572
+      ],
+      "NodePositionsY": [
+        -753.3887939233506,
+        -630.4016290004089,
+        -690.8163766818539,
+        -756.5598261126839,
+        -753.3887939233506,
+        -610.111142020641,
+        -610.1111420206408
+      ],
+      "Wires": [
+        {
+          "FromNodeIndex": 0,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 2,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 1,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 2,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 3,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 4,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 4,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 0,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 3,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 1,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 5,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 1,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 6,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 5,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 6,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 0,
+          "ToPortIndex": 1
+        }
+      ],
+      "ExposedInputs": [
+        {
+          "NodeIndex": 3,
+          "PortIndex": 0,
+          "Name": "A"
+        },
+        {
+          "NodeIndex": 6,
+          "PortIndex": 0,
+          "Name": "B"
+        }
+      ],
+      "ExposedOutputs": [
+        {
+          "NodeIndex": 2,
+          "PortIndex": 0,
+          "Name": "Y"
+        }
+      ]
+    },
+    {
+      "TypeId": "AND (S)",
+      "NodeTypeIds": [
+        "AND",
+        "AND",
+        "IO",
+        "IO"
+      ],
+      "NodeNames": [
+        "AND",
+        "AND",
+        "IO",
+        "IO"
+      ],
+      "InputPortNames": [
+        [
+          "A",
+          "B"
+        ],
+        [
+          "Signal",
+          "B"
+        ],
+        [
+          "Signal"
+        ],
+        [
+          "In"
+        ]
+      ],
+      "OutputPortNames": [
+        [
+          "Result"
+        ],
+        [
+          "Result"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Signal"
+        ]
+      ],
+      "NodePositionsX": [
+        406.68602347203137,
+        615.923334857491,
+        406.45694253924717,
+        616
+      ],
+      "NodePositionsY": [
+        214.3733647356235,
+        208.49270629940952,
+        140.2005252294507,
+        137.0028419494629
+      ],
+      "Wires": [
+        {
+          "FromNodeIndex": 0,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 1,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 2,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 1,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 2,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 3,
+          "ToPortIndex": 0
+        }
+      ],
+      "ExposedInputs": [
+        {
+          "NodeIndex": 2,
+          "PortIndex": 0,
+          "Name": "Signal"
+        },
+        {
+          "NodeIndex": 0,
+          "PortIndex": 0,
+          "Name": "A"
+        },
+        {
+          "NodeIndex": 0,
+          "PortIndex": 1,
+          "Name": "B"
+        }
+      ],
+      "ExposedOutputs": [
+        {
+          "NodeIndex": 3,
+          "PortIndex": 0,
+          "Name": "Signal"
+        },
+        {
+          "NodeIndex": 1,
+          "PortIndex": 0,
+          "Name": "Result"
+        }
+      ]
+    },
+    {
+      "TypeId": "OR (S)",
+      "NodeTypeIds": [
+        "OR",
+        "AND",
+        "IO",
+        "IO"
+      ],
+      "NodeNames": [
+        "OR",
+        "AND",
+        "IO",
+        "IO"
+      ],
+      "InputPortNames": [
+        [
+          "A",
+          "B"
+        ],
+        [
+          "A",
+          "B"
+        ],
+        [
+          "Signal"
+        ],
+        [
+          "In"
+        ]
+      ],
+      "OutputPortNames": [
+        [
+          "Result"
+        ],
+        [
+          "Result"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Signal"
+        ]
+      ],
+      "NodePositionsX": [
+        399,
+        607,
+        400,
+        604
+      ],
+      "NodePositionsY": [
+        215.0028419494629,
+        198.0028419494629,
+        121.00284194946289,
+        121.00284194946289
+      ],
+      "Wires": [
+        {
+          "FromNodeIndex": 2,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 3,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 0,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 1,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 2,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 1,
+          "ToPortIndex": 0
+        }
+      ],
+      "ExposedInputs": [
+        {
+          "NodeIndex": 2,
+          "PortIndex": 0,
+          "Name": "Signal"
+        },
+        {
+          "NodeIndex": 0,
+          "PortIndex": 0,
+          "Name": "A"
+        },
+        {
+          "NodeIndex": 0,
+          "PortIndex": 1,
+          "Name": "B"
+        }
+      ],
+      "ExposedOutputs": [
+        {
+          "NodeIndex": 3,
+          "PortIndex": 0,
+          "Name": "Signal"
+        },
+        {
+          "NodeIndex": 1,
+          "PortIndex": 0,
+          "Name": "Result"
+        }
+      ]
+    },
+    {
+      "TypeId": "NOT (S)",
+      "NodeTypeIds": [
+        "NOT",
+        "AND",
+        "IO",
+        "IO"
+      ],
+      "NodeNames": [
+        "NOT",
+        "AND",
+        "IO",
+        "IO"
+      ],
+      "InputPortNames": [
+        [
+          "A"
+        ],
+        [
+          "A",
+          "B"
+        ],
+        [
+          "Signal"
+        ],
+        [
+          "In"
+        ]
+      ],
+      "OutputPortNames": [
+        [
+          "Result"
+        ],
+        [
+          "Result"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Signal"
+        ]
+      ],
+      "NodePositionsX": [
+        489,
+        705,
+        491,
+        705
+      ],
+      "NodePositionsY": [
+        223.0028419494629,
+        202.0028419494629,
+        126.00284194946289,
+        127.00284194946289
+      ],
+      "Wires": [
+        {
+          "FromNodeIndex": 2,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 3,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 2,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 1,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 0,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 1,
+          "ToPortIndex": 1
+        }
+      ],
+      "ExposedInputs": [
+        {
+          "NodeIndex": 2,
+          "PortIndex": 0,
+          "Name": "Signal"
+        },
+        {
+          "NodeIndex": 0,
+          "PortIndex": 0,
+          "Name": "A"
+        }
+      ],
+      "ExposedOutputs": [
+        {
+          "NodeIndex": 3,
+          "PortIndex": 0,
+          "Name": "Signal"
+        },
+        {
+          "NodeIndex": 1,
+          "PortIndex": 0,
+          "Name": "Result"
+        }
+      ]
+    },
+    {
+      "TypeId": "NAND (S)",
+      "NodeTypeIds": [
+        "AND (S)",
+        "NOT (S)"
+      ],
+      "NodeNames": [
+        "AND (S)",
+        "NOT (S)"
+      ],
+      "InputPortNames": [
+        [
+          "Signal",
+          "A",
+          "B"
+        ],
+        [
+          "Signal",
+          "A"
+        ]
+      ],
+      "OutputPortNames": [
+        [
+          "Signal",
+          "Result"
+        ],
+        [
+          "Signal",
+          "Result"
+        ]
+      ],
+      "NodePositionsX": [
+        100,
+        303.5
+      ],
+      "NodePositionsY": [
+        420.0028419494629,
+        420.5028419494629
+      ],
+      "Wires": [
+        {
+          "FromNodeIndex": 0,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 1,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 0,
+          "FromPortIndex": 1,
+          "ToNodeIndex": 1,
+          "ToPortIndex": 1
+        }
+      ],
+      "ExposedInputs": [
+        {
+          "NodeIndex": 0,
+          "PortIndex": 0,
+          "Name": "Signal"
+        },
+        {
+          "NodeIndex": 0,
+          "PortIndex": 1,
+          "Name": "A"
+        },
+        {
+          "NodeIndex": 0,
+          "PortIndex": 2,
+          "Name": "B"
+        }
+      ],
+      "ExposedOutputs": [
+        {
+          "NodeIndex": 1,
+          "PortIndex": 0,
+          "Name": "Signal"
+        },
+        {
+          "NodeIndex": 1,
+          "PortIndex": 1,
+          "Name": "Result"
+        }
+      ]
+    },
+    {
+      "TypeId": "NOR (S)",
+      "NodeTypeIds": [
+        "OR (S)",
+        "NOT (S)"
+      ],
+      "NodeNames": [
+        "OR (S)",
+        "NOT (S)"
+      ],
+      "InputPortNames": [
+        [
+          "Signal",
+          "A",
+          "B"
+        ],
+        [
+          "Signal",
+          "A"
+        ]
+      ],
+      "OutputPortNames": [
+        [
+          "Signal",
+          "Result"
+        ],
+        [
+          "Signal",
+          "Result"
+        ]
+      ],
+      "NodePositionsX": [
+        100.5,
+        294.5
+      ],
+      "NodePositionsY": [
+        282.7528419494629,
+        282.5028419494629
+      ],
+      "Wires": [
+        {
+          "FromNodeIndex": 0,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 1,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 0,
+          "FromPortIndex": 1,
+          "ToNodeIndex": 1,
+          "ToPortIndex": 1
+        }
+      ],
+      "ExposedInputs": [
+        {
+          "NodeIndex": 0,
+          "PortIndex": 0,
+          "Name": "Signal"
+        },
+        {
+          "NodeIndex": 0,
+          "PortIndex": 1,
+          "Name": "A"
+        },
+        {
+          "NodeIndex": 0,
+          "PortIndex": 2,
+          "Name": "B"
+        }
+      ],
+      "ExposedOutputs": [
+        {
+          "NodeIndex": 1,
+          "PortIndex": 0,
+          "Name": "Signal"
+        },
+        {
+          "NodeIndex": 1,
+          "PortIndex": 1,
+          "Name": "Result"
+        }
+      ]
+    },
+    {
+      "TypeId": "XOR (S)",
+      "NodeTypeIds": [
+        "NAND (S)",
+        "OR",
+        "OR",
+        "IO",
+        "NOT",
+        "NOT",
+        "IO",
+        "IO"
+      ],
+      "NodeNames": [
+        "NAND (S)",
+        "OR",
+        "OR",
+        "IO",
+        "NOT",
+        "NOT",
+        "IO",
+        "IO"
+      ],
+      "InputPortNames": [
+        [
+          "Signal",
+          "A",
+          "B"
+        ],
+        [
+          "A",
+          "B"
+        ],
+        [
+          "A",
+          "B"
+        ],
+        [
+          "A"
+        ],
+        [
+          "A"
+        ],
+        [
+          "A"
+        ],
+        [
+          "B"
+        ],
+        [
+          "Signal"
+        ]
+      ],
+      "OutputPortNames": [
+        [
+          "Signal",
+          "Result"
+        ],
+        [
+          "Result"
+        ],
+        [
+          "Result"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Result"
+        ],
+        [
+          "Result"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Out"
+        ]
+      ],
+      "NodePositionsX": [
+        -98.33115425087945,
+        -359.34986211601915,
+        -356.1133577759418,
+        -784.3889413959383,
+        -575.1168181211802,
+        -573.1665224018512,
+        -782.4604697268572,
+        -787.4208587346369
+      ],
+      "NodePositionsY": [
+        -813.352409047409,
+        -723.3887939233506,
+        -600.4016290004089,
+        -726.5598261126839,
+        -723.3887939233506,
+        -580.111142020641,
+        -580.1111420206408,
+        -814.3736646207087
+      ],
+      "Wires": [
+        {
+          "FromNodeIndex": 3,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 4,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 4,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 1,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 3,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 2,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 5,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 2,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 6,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 5,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 6,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 1,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 1,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 0,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 2,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 0,
+          "ToPortIndex": 2
+        },
+        {
+          "FromNodeIndex": 7,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 0,
+          "ToPortIndex": 0
+        }
+      ],
+      "ExposedInputs": [
+        {
+          "NodeIndex": 7,
+          "PortIndex": 0,
+          "Name": "Signal"
+        },
+        {
+          "NodeIndex": 3,
+          "PortIndex": 0,
+          "Name": "A"
+        },
+        {
+          "NodeIndex": 6,
+          "PortIndex": 0,
+          "Name": "B"
+        }
+      ],
+      "ExposedOutputs": [
+        {
+          "NodeIndex": 0,
+          "PortIndex": 0,
+          "Name": "Signal"
+        },
+        {
+          "NodeIndex": 0,
+          "PortIndex": 1,
+          "Name": "Result"
+        }
+      ]
+    },
+    {
+      "TypeId": "AND (4) (S)",
+      "NodeTypeIds": [
+        "AND (S)",
+        "AND",
+        "AND",
+        "IO"
+      ],
+      "NodeNames": [
+        "AND (S)",
+        "AND",
+        "AND",
+        "IO"
+      ],
+      "InputPortNames": [
+        [
+          "Signal",
+          "A",
+          "B"
+        ],
+        [
+          "A",
+          "B"
+        ],
+        [
+          "C",
+          "D"
+        ],
+        [
+          "Signal"
+        ]
+      ],
+      "OutputPortNames": [
+        [
+          "Signal",
+          "Result"
+        ],
+        [
+          "Result"
+        ],
+        [
+          "Result"
+        ],
+        [
+          "Out"
+        ]
+      ],
+      "NodePositionsX": [
+        -638.5675428420082,
+        -875.455064718407,
+        -876.0211965734262,
+        -875.455064718407
+      ],
+      "NodePositionsY": [
+        -696.7036607280588,
+        -605.0052651630011,
+        -499.86352435274557,
+        -695.4300719007663
+      ],
+      "Wires": [
+        {
+          "FromNodeIndex": 1,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 0,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 2,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 0,
+          "ToPortIndex": 2
+        },
+        {
+          "FromNodeIndex": 3,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 0,
+          "ToPortIndex": 0
+        }
+      ],
+      "ExposedInputs": [
+        {
+          "NodeIndex": 3,
+          "PortIndex": 0,
+          "Name": "Signal"
+        },
+        {
+          "NodeIndex": 1,
+          "PortIndex": 0,
+          "Name": "A"
+        },
+        {
+          "NodeIndex": 1,
+          "PortIndex": 1,
+          "Name": "B"
+        },
+        {
+          "NodeIndex": 2,
+          "PortIndex": 0,
+          "Name": "C"
+        },
+        {
+          "NodeIndex": 2,
+          "PortIndex": 1,
+          "Name": "D"
+        }
+      ],
+      "ExposedOutputs": [
+        {
+          "NodeIndex": 0,
+          "PortIndex": 0,
+          "Name": "Signal"
+        },
+        {
+          "NodeIndex": 0,
+          "PortIndex": 1,
+          "Name": "Result"
+        }
+      ]
+    },
+    {
+      "TypeId": "SR Latch (S)",
+      "NodeTypeIds": [
+        "NOR (S)",
+        "NOR (S)",
+        "AND",
+        "IO",
+        "IO",
+        "IO"
+      ],
+      "NodeNames": [
+        "NOR (S)",
+        "NOR (S)",
+        "AND",
+        "IO",
+        "IO",
+        "IO"
+      ],
+      "InputPortNames": [
+        [
+          "Signal",
+          "Reset",
+          "B"
+        ],
+        [
+          "Signal",
+          "A",
+          "Set"
+        ],
+        [
+          "A",
+          "B"
+        ],
+        [
+          "Signal"
+        ],
+        [
+          "In"
+        ],
+        [
+          "In"
+        ]
+      ],
+      "OutputPortNames": [
+        [
+          "Signal",
+          "Result"
+        ],
+        [
+          "Signal",
+          "Result"
+        ],
+        [
+          "Signal"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Q"
+        ],
+        [
+          "!Q"
+        ]
+      ],
+      "NodePositionsX": [
+        -1812.5315810273946,
+        -1813.8118010326396,
+        -1580.8117600780345,
+        -2059.614042039696,
+        -1577.2631693047329,
+        -1577.263169304733
+      ],
+      "NodePositionsY": [
+        -823.9845582695918,
+        -678.0394776716523,
+        -827.8252182853275,
+        -823.9845582695921,
+        -733.5649247666884,
+        -650.3506244257576
+      ],
+      "Wires": [
+        {
+          "FromNodeIndex": 0,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 2,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 1,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 2,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 3,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 0,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 3,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 1,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 1,
+          "FromPortIndex": 1,
+          "ToNodeIndex": 5,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 0,
+          "FromPortIndex": 1,
+          "ToNodeIndex": 4,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 1,
+          "FromPortIndex": 1,
+          "ToNodeIndex": 0,
+          "ToPortIndex": 2
+        },
+        {
+          "FromNodeIndex": 0,
+          "FromPortIndex": 1,
+          "ToNodeIndex": 1,
+          "ToPortIndex": 1
+        }
+      ],
+      "ExposedInputs": [
+        {
+          "NodeIndex": 3,
+          "PortIndex": 0,
+          "Name": "Signal"
+        },
+        {
+          "NodeIndex": 0,
+          "PortIndex": 1,
+          "Name": "Reset"
+        },
+        {
+          "NodeIndex": 1,
+          "PortIndex": 2,
+          "Name": "Set"
+        }
+      ],
+      "ExposedOutputs": [
+        {
+          "NodeIndex": 2,
+          "PortIndex": 0,
+          "Name": "Signal"
+        },
+        {
+          "NodeIndex": 4,
+          "PortIndex": 0,
+          "Name": "Q"
+        },
+        {
+          "NodeIndex": 5,
+          "PortIndex": 0,
+          "Name": "!Q"
+        }
+      ]
+    },
+    {
+      "TypeId": "XNOR (S)",
+      "NodeTypeIds": [
+        "NOT (S)",
+        "XOR",
+        "IO"
+      ],
+      "NodeNames": [
+        "NOT (S)",
+        "XOR",
+        "IO"
+      ],
+      "InputPortNames": [
+        [
+          "Signal",
+          "A"
+        ],
+        [
+          "A",
+          "B"
+        ],
+        [
+          "Signal"
+        ]
+      ],
+      "OutputPortNames": [
+        [
+          "Signal",
+          "Result"
+        ],
+        [
+          "Y"
+        ],
+        [
+          "Out"
+        ]
+      ],
+      "NodePositionsX": [
+        -1276.723454890949,
+        -1502.3548524411628,
+        -1503.5361686587028
+      ],
+      "NodePositionsY": [
+        -1010.029252843935,
+        -936.7876473564309,
+        -1007.6666204088542
+      ],
+      "Wires": [
+        {
+          "FromNodeIndex": 1,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 0,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 2,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 0,
+          "ToPortIndex": 0
+        }
+      ],
+      "ExposedInputs": [
+        {
+          "NodeIndex": 2,
+          "PortIndex": 0,
+          "Name": "Signal"
+        },
+        {
+          "NodeIndex": 1,
+          "PortIndex": 0,
+          "Name": "A"
+        },
+        {
+          "NodeIndex": 1,
+          "PortIndex": 1,
+          "Name": "B"
+        }
+      ],
+      "ExposedOutputs": [
+        {
+          "NodeIndex": 0,
+          "PortIndex": 0,
+          "Name": "Signal"
+        },
+        {
+          "NodeIndex": 0,
+          "PortIndex": 1,
+          "Name": "Result"
+        }
+      ]
+    },
+    {
+      "TypeId": "OR (5) (S)",
+      "NodeTypeIds": [
+        "OR",
+        "OR",
+        "OR (S)",
+        "OR",
+        "IO"
+      ],
+      "NodeNames": [
+        "OR",
+        "OR",
+        "OR (S)",
+        "OR",
+        "IO"
+      ],
+      "InputPortNames": [
+        [
+          "A",
+          "C"
+        ],
+        [
+          "D",
+          "E"
+        ],
+        [
+          "Signal",
+          "A",
+          "B"
+        ],
+        [
+          "A",
+          "B"
+        ],
+        [
+          "Signal"
+        ]
+      ],
+      "OutputPortNames": [
+        [
+          "Result"
+        ],
+        [
+          "Result"
+        ],
+        [
+          "Signal",
+          "Result"
+        ],
+        [
+          "Result"
+        ],
+        [
+          "Out"
+        ]
+      ],
+      "NodePositionsX": [
+        -1285.5814063337873,
+        -1284.532673402944,
+        -1046.9316654165377,
+        -1479.0443455563034,
+        -1476.5011990675878
+      ],
+      "NodePositionsY": [
+        -254.94361468786607,
+        -160.60452848937055,
+        -246.2654422908752,
+        -324.74259725326147,
+        -406.811631635207
+      ],
+      "Wires": [
+        {
+          "FromNodeIndex": 0,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 2,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 1,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 2,
+          "ToPortIndex": 2
+        },
+        {
+          "FromNodeIndex": 3,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 0,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 4,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 2,
+          "ToPortIndex": 0
+        }
+      ],
+      "ExposedInputs": [
+        {
+          "NodeIndex": 4,
+          "PortIndex": 0,
+          "Name": "Signal"
+        },
+        {
+          "NodeIndex": 3,
+          "PortIndex": 0,
+          "Name": "A"
+        },
+        {
+          "NodeIndex": 3,
+          "PortIndex": 1,
+          "Name": "B"
+        },
+        {
+          "NodeIndex": 0,
+          "PortIndex": 1,
+          "Name": "C"
+        },
+        {
+          "NodeIndex": 1,
+          "PortIndex": 0,
+          "Name": "D"
+        },
+        {
+          "NodeIndex": 1,
+          "PortIndex": 1,
+          "Name": "E"
+        }
+      ],
+      "ExposedOutputs": [
+        {
+          "NodeIndex": 2,
+          "PortIndex": 0,
+          "Name": "Signal"
+        },
+        {
+          "NodeIndex": 2,
+          "PortIndex": 1,
+          "Name": "Result"
+        }
+      ]
+    },
+    {
+      "TypeId": "AND (5) (S)",
+      "NodeTypeIds": [
+        "AND",
+        "AND",
+        "AND",
+        "AND (S)",
+        "IO"
+      ],
+      "NodeNames": [
+        "AND",
+        "AND",
+        "AND",
+        "AND (S)",
+        "IO"
+      ],
+      "InputPortNames": [
+        [
+          "A",
+          "B"
+        ],
+        [
+          "A",
+          "C"
+        ],
+        [
+          "D",
+          "E"
+        ],
+        [
+          "Signal",
+          "A",
+          "B"
+        ],
+        [
+          "Signal"
+        ]
+      ],
+      "OutputPortNames": [
+        [
+          "Result"
+        ],
+        [
+          "Result"
+        ],
+        [
+          "Result"
+        ],
+        [
+          "Signal",
+          "Result"
+        ],
+        [
+          "Out"
+        ]
+      ],
+      "NodePositionsX": [
+        -1432.9711733341571,
+        -1235.1029694188912,
+        -1232.6813172049708,
+        -877.349121335276,
+        -1433.3346773220096
+      ],
+      "NodePositionsY": [
+        -852.8089139696913,
+        -809.6192693763489,
+        -712.4719878102425,
+        -915.8614104188645,
+        -928.4341057875406
+      ],
+      "Wires": [
+        {
+          "FromNodeIndex": 0,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 1,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 4,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 3,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 1,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 3,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 2,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 3,
+          "ToPortIndex": 2
+        }
+      ],
+      "ExposedInputs": [
+        {
+          "NodeIndex": 4,
+          "PortIndex": 0,
+          "Name": "Signal"
+        },
+        {
+          "NodeIndex": 0,
+          "PortIndex": 0,
+          "Name": "A"
+        },
+        {
+          "NodeIndex": 0,
+          "PortIndex": 1,
+          "Name": "B"
+        },
+        {
+          "NodeIndex": 1,
+          "PortIndex": 1,
+          "Name": "C"
+        },
+        {
+          "NodeIndex": 2,
+          "PortIndex": 0,
+          "Name": "D"
+        },
+        {
+          "NodeIndex": 2,
+          "PortIndex": 1,
+          "Name": "E"
+        }
+      ],
+      "ExposedOutputs": [
+        {
+          "NodeIndex": 3,
+          "PortIndex": 0,
+          "Name": "Signal"
+        },
+        {
+          "NodeIndex": 3,
+          "PortIndex": 1,
+          "Name": "Result"
+        }
+      ]
+    },
+    {
+      "TypeId": "OR (4) (S)",
+      "NodeTypeIds": [
+        "OR",
+        "OR",
+        "OR (S)",
+        "IO"
+      ],
+      "NodeNames": [
+        "OR",
+        "OR",
+        "OR (S)",
+        "IO"
+      ],
+      "InputPortNames": [
+        [
+          "A",
+          "B"
+        ],
+        [
+          "C",
+          "D"
+        ],
+        [
+          "Signal",
+          "A",
+          "B"
+        ],
+        [
+          "Signal"
+        ]
+      ],
+      "OutputPortNames": [
+        [
+          "Result"
+        ],
+        [
+          "Result"
+        ],
+        [
+          "Signal",
+          "Result"
+        ],
+        [
+          "Out"
+        ]
+      ],
+      "NodePositionsX": [
+        -440.55379021359363,
+        -439.5050572827504,
+        -200.31530150663608,
+        -442.4125959721445
+      ],
+      "NodePositionsY": [
+        -677.7367347546403,
+        -583.3976485561449,
+        -759.6171863710043,
+        -759.6998489548301
+      ],
+      "Wires": [
+        {
+          "FromNodeIndex": 0,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 2,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 1,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 2,
+          "ToPortIndex": 2
+        },
+        {
+          "FromNodeIndex": 3,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 2,
+          "ToPortIndex": 0
+        }
+      ],
+      "ExposedInputs": [
+        {
+          "NodeIndex": 3,
+          "PortIndex": 0,
+          "Name": "Signal"
+        },
+        {
+          "NodeIndex": 0,
+          "PortIndex": 0,
+          "Name": "A"
+        },
+        {
+          "NodeIndex": 0,
+          "PortIndex": 1,
+          "Name": "B"
+        },
+        {
+          "NodeIndex": 1,
+          "PortIndex": 0,
+          "Name": "C"
+        },
+        {
+          "NodeIndex": 1,
+          "PortIndex": 1,
+          "Name": "D"
+        }
+      ],
+      "ExposedOutputs": [
+        {
+          "NodeIndex": 2,
+          "PortIndex": 0,
+          "Name": "Signal"
+        },
+        {
+          "NodeIndex": 2,
+          "PortIndex": 1,
+          "Name": "Result"
+        }
+      ]
+    },
+    {
+      "TypeId": "Gate4 (S)",
+      "NodeTypeIds": [
+        "OR (5) (S)",
+        "AND (4)",
+        "AND",
+        "AND (4)",
+        "AND",
+        "AND",
+        "IO",
+        "IO",
+        "AND",
+        "IO",
+        "IO",
+        "IO",
+        "IO",
+        "IO",
+        "IO",
+        "IO",
+        "IO"
+      ],
+      "NodeNames": [
+        "OR (5) (S)",
+        "AND (4)",
+        "AND",
+        "AND (4)",
+        "AND",
+        "AND",
+        "IO",
+        "IO",
+        "AND",
+        "IO",
+        "IO",
+        "IO",
+        "IO",
+        "IO",
+        "IO",
+        "IO",
+        "IO"
+      ],
+      "InputPortNames": [
+        [
+          "Signal",
+          "G3",
+          "G2\u002BP3",
+          "G1\u002BP2\u002BP3",
+          "G0\u002BP1\u002BP2\u002BP3",
+          "C0\u002BP0\u002BP1\u002BP2\u002BP3"
+        ],
+        [
+          "P3",
+          "P2",
+          "P1",
+          "D"
+        ],
+        [
+          "P0",
+          "C0"
+        ],
+        [
+          "P3",
+          "P2",
+          "P1",
+          "G0"
+        ],
+        [
+          "P3",
+          "B"
+        ],
+        [
+          "P2",
+          "G1"
+        ],
+        [
+          "Signal"
+        ],
+        [
+          "P3"
+        ],
+        [
+          "G2",
+          "P3"
+        ],
+        [
+          "G2"
+        ],
+        [
+          "P2"
+        ],
+        [
+          "G1"
+        ],
+        [
+          "P1"
+        ],
+        [
+          "G0"
+        ],
+        [
+          "P0"
+        ],
+        [
+          "C0"
+        ],
+        [
+          "G3"
+        ]
+      ],
+      "OutputPortNames": [
+        [
+          "Signal",
+          "C4"
+        ],
+        [
+          "Result"
+        ],
+        [
+          "Result"
+        ],
+        [
+          "Result"
+        ],
+        [
+          "Result"
+        ],
+        [
+          "Result"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Result"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Out"
+        ]
+      ],
+      "NodePositionsX": [
+        -3597.8992819942046,
+        -3876.555594983903,
+        -3877.7917962707097,
+        -3880.9276706418905,
+        -3880.238652985549,
+        -3881.1919227891854,
+        -4313.9092236425295,
+        -4313.1594387180485,
+        -3880.595629924053,
+        -4309.329246423656,
+        -4312.469623348328,
+        -4309.686223362158,
+        -4312.13678491711,
+        -4311.089992608885,
+        -4315.634138780286,
+        -4314.944323410566,
+        -4310.733015670383
+      ],
+      "NodePositionsY": [
+        -1186.316031191381,
+        -704.222872419225,
+        -607.1489446120711,
+        -843.6851860054785,
+        -1001.1802925932692,
+        -947.3549069259674,
+        -1188.1142008627512,
+        -845.9568956523237,
+        -1109.3568772788713,
+        -640.0957878706479,
+        -914.3553726254039,
+        -709.5410571519526,
+        -982.0640342287635,
+        -777.9395341250331,
+        -1048.3689265853955,
+        -1118.860988174924,
+        -570.3176801581261
+      ],
+      "Wires": [
+        {
+          "FromNodeIndex": 2,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 1,
+          "ToPortIndex": 3
+        },
+        {
+          "FromNodeIndex": 5,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 4,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 7,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 4,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 7,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 3,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 7,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 1,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 7,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 8,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 9,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 8,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 10,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 5,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 10,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 3,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 10,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 1,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 11,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 5,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 12,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 3,
+          "ToPortIndex": 2
+        },
+        {
+          "FromNodeIndex": 12,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 1,
+          "ToPortIndex": 2
+        },
+        {
+          "FromNodeIndex": 13,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 3,
+          "ToPortIndex": 3
+        },
+        {
+          "FromNodeIndex": 14,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 2,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 15,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 2,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 16,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 0,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 1,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 0,
+          "ToPortIndex": 5
+        },
+        {
+          "FromNodeIndex": 3,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 0,
+          "ToPortIndex": 4
+        },
+        {
+          "FromNodeIndex": 4,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 0,
+          "ToPortIndex": 3
+        },
+        {
+          "FromNodeIndex": 8,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 0,
+          "ToPortIndex": 2
+        },
+        {
+          "FromNodeIndex": 6,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 0,
+          "ToPortIndex": 0
+        }
+      ],
+      "ExposedInputs": [
+        {
+          "NodeIndex": 6,
+          "PortIndex": 0,
+          "Name": "Signal"
+        },
+        {
+          "NodeIndex": 15,
+          "PortIndex": 0,
+          "Name": "C0"
+        },
+        {
+          "NodeIndex": 14,
+          "PortIndex": 0,
+          "Name": "P0"
+        },
+        {
+          "NodeIndex": 12,
+          "PortIndex": 0,
+          "Name": "P1"
+        },
+        {
+          "NodeIndex": 10,
+          "PortIndex": 0,
+          "Name": "P2"
+        },
+        {
+          "NodeIndex": 7,
+          "PortIndex": 0,
+          "Name": "P3"
+        },
+        {
+          "NodeIndex": 13,
+          "PortIndex": 0,
+          "Name": "G0"
+        },
+        {
+          "NodeIndex": 11,
+          "PortIndex": 0,
+          "Name": "G1"
+        },
+        {
+          "NodeIndex": 9,
+          "PortIndex": 0,
+          "Name": "G2"
+        },
+        {
+          "NodeIndex": 16,
+          "PortIndex": 0,
+          "Name": "G3"
+        }
+      ],
+      "ExposedOutputs": [
+        {
+          "NodeIndex": 0,
+          "PortIndex": 0,
+          "Name": "Signal"
+        },
+        {
+          "NodeIndex": 0,
+          "PortIndex": 1,
+          "Name": "C4"
+        }
+      ]
+    },
+    {
+      "TypeId": "Gate3 (S)",
+      "NodeTypeIds": [
+        "AND (4)",
+        "AND",
+        "AND",
+        "IO",
+        "IO",
+        "AND",
+        "IO",
+        "IO",
+        "IO",
+        "IO",
+        "IO",
+        "IO",
+        "OR (4) (S)"
+      ],
+      "NodeNames": [
+        "AND (4)",
+        "AND",
+        "AND",
+        "IO",
+        "IO",
+        "AND",
+        "IO",
+        "IO",
+        "IO",
+        "IO",
+        "IO",
+        "IO",
+        "OR (4) (S)"
+      ],
+      "InputPortNames": [
+        [
+          "P2",
+          "P1",
+          "P0",
+          "C0"
+        ],
+        [
+          "P2",
+          "B"
+        ],
+        [
+          "P1",
+          "G0"
+        ],
+        [
+          "Signal"
+        ],
+        [
+          "P0"
+        ],
+        [
+          "P2",
+          "G1"
+        ],
+        [
+          "G0"
+        ],
+        [
+          "P1"
+        ],
+        [
+          "C0"
+        ],
+        [
+          "G1"
+        ],
+        [
+          "P2"
+        ],
+        [
+          "G2"
+        ],
+        [
+          "Signal",
+          "G2",
+          "P2\u002BG1",
+          "P2\u002BP1\u002BG0",
+          "P2\u002BP1\u002BP0\u002BC0"
+        ]
+      ],
+      "OutputPortNames": [
+        [
+          "Result"
+        ],
+        [
+          "Result"
+        ],
+        [
+          "Result"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Result"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Signal",
+          "C3"
+        ]
+      ],
+      "NodePositionsX": [
+        -3759.066886964879,
+        -3758.3778693085374,
+        -3759.331139112174,
+        -4192.048439965518,
+        -4192.993888849454,
+        -3758.7348462470413,
+        -4191.456456575526,
+        -4192.818851952727,
+        -4193.467293452919,
+        -4191.714924753471,
+        -4192.235922829346,
+        -4191.172635063127,
+        -3486.0972864628143
+      ],
+      "NodePositionsY": [
+        -1511.5048234115525,
+        -1668.9999299993433,
+        -1615.1745443320415,
+        -1921.3177643309953,
+        -1768.9092212252588,
+        -1785.6522088041154,
+        -1573.6988409893893,
+        -1706.6740042168296,
+        -1836.5105643713828,
+        -1506.947937550402,
+        -1640.0429011528681,
+        -1441.1675086599041,
+        -1918.1294941632334
+      ],
+      "Wires": [
+        {
+          "FromNodeIndex": 2,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 1,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 10,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 5,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 10,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 1,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 10,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 0,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 9,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 5,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 7,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 2,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 7,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 0,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 6,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 2,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 4,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 0,
+          "ToPortIndex": 2
+        },
+        {
+          "FromNodeIndex": 8,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 0,
+          "ToPortIndex": 3
+        },
+        {
+          "FromNodeIndex": 3,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 12,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 11,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 12,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 5,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 12,
+          "ToPortIndex": 2
+        },
+        {
+          "FromNodeIndex": 1,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 12,
+          "ToPortIndex": 3
+        },
+        {
+          "FromNodeIndex": 0,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 12,
+          "ToPortIndex": 4
+        }
+      ],
+      "ExposedInputs": [
+        {
+          "NodeIndex": 3,
+          "PortIndex": 0,
+          "Name": "Signal"
+        },
+        {
+          "NodeIndex": 8,
+          "PortIndex": 0,
+          "Name": "C0"
+        },
+        {
+          "NodeIndex": 4,
+          "PortIndex": 0,
+          "Name": "P0"
+        },
+        {
+          "NodeIndex": 7,
+          "PortIndex": 0,
+          "Name": "P1"
+        },
+        {
+          "NodeIndex": 10,
+          "PortIndex": 0,
+          "Name": "P2"
+        },
+        {
+          "NodeIndex": 6,
+          "PortIndex": 0,
+          "Name": "G0"
+        },
+        {
+          "NodeIndex": 9,
+          "PortIndex": 0,
+          "Name": "G1"
+        },
+        {
+          "NodeIndex": 11,
+          "PortIndex": 0,
+          "Name": "G2"
+        }
+      ],
+      "ExposedOutputs": [
+        {
+          "NodeIndex": 12,
+          "PortIndex": 0,
+          "Name": "Signal"
+        },
+        {
+          "NodeIndex": 12,
+          "PortIndex": 1,
+          "Name": "C3"
+        }
+      ]
+    },
+    {
+      "TypeId": "Gate2 (S)",
+      "NodeTypeIds": [
+        "AND",
+        "AND",
+        "IO",
+        "AND",
+        "IO",
+        "IO",
+        "IO",
+        "IO",
+        "IO",
+        "OR (S)",
+        "OR"
+      ],
+      "NodeNames": [
+        "AND",
+        "AND",
+        "IO",
+        "AND",
+        "IO",
+        "IO",
+        "IO",
+        "IO",
+        "IO",
+        "OR (S)",
+        "OR"
+      ],
+      "InputPortNames": [
+        [
+          "P1",
+          "B"
+        ],
+        [
+          "P0",
+          "C0"
+        ],
+        [
+          "Signal"
+        ],
+        [
+          "P1",
+          "G0"
+        ],
+        [
+          "C0"
+        ],
+        [
+          "P0"
+        ],
+        [
+          "G0"
+        ],
+        [
+          "P1"
+        ],
+        [
+          "G1"
+        ],
+        [
+          "Signal",
+          "G1",
+          "B"
+        ],
+        [
+          "P1\u002BG0",
+          "P1\u002BP0\u002BC0"
+        ]
+      ],
+      "OutputPortNames": [
+        [
+          "Result"
+        ],
+        [
+          "Result"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Result"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Signal",
+          "C2"
+        ],
+        [
+          "Result"
+        ]
+      ],
+      "NodePositionsX": [
+        -4292.616934956152,
+        -4293.570204759789,
+        -4525.946417387903,
+        -4292.973911894656,
+        -4523.852873350039,
+        -4524.7308483644165,
+        -4520.212303768623,
+        -4519.8979972915995,
+        -4516.146485211618,
+        -4053.9687924472178,
+        -4056.3904193384087
+      ],
+      "NodePositionsY": [
+        -1833.9408947402578,
+        -1780.115509072956,
+        -2086.161655030178,
+        -1950.59317354503,
+        -2021.9706269226256,
+        -1960.1786230962573,
+        -1892.2413482225659,
+        -1821.7657663958444,
+        -1751.2763857274706,
+        -2084.010936209849,
+        -2012.5729429197008
+      ],
+      "Wires": [
+        {
+          "FromNodeIndex": 1,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 0,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 7,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 3,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 7,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 0,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 6,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 3,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 5,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 1,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 4,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 1,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 10,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 9,
+          "ToPortIndex": 2
+        },
+        {
+          "FromNodeIndex": 8,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 9,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 2,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 9,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 3,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 10,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 0,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 10,
+          "ToPortIndex": 1
+        }
+      ],
+      "ExposedInputs": [
+        {
+          "NodeIndex": 2,
+          "PortIndex": 0,
+          "Name": "Signal"
+        },
+        {
+          "NodeIndex": 4,
+          "PortIndex": 0,
+          "Name": "C0"
+        },
+        {
+          "NodeIndex": 5,
+          "PortIndex": 0,
+          "Name": "P0"
+        },
+        {
+          "NodeIndex": 6,
+          "PortIndex": 0,
+          "Name": "G0"
+        },
+        {
+          "NodeIndex": 7,
+          "PortIndex": 0,
+          "Name": "P1"
+        },
+        {
+          "NodeIndex": 8,
+          "PortIndex": 0,
+          "Name": "G1"
+        }
+      ],
+      "ExposedOutputs": [
+        {
+          "NodeIndex": 9,
+          "PortIndex": 0,
+          "Name": "Signal"
+        },
+        {
+          "NodeIndex": 9,
+          "PortIndex": 1,
+          "Name": "C2"
+        }
+      ]
+    },
+    {
+      "TypeId": "Gate1 (S)",
+      "NodeTypeIds": [
+        "IO",
+        "AND",
+        "IO",
+        "OR (S)"
+      ],
+      "NodeNames": [
+        "IO",
+        "AND",
+        "IO",
+        "OR (S)"
+      ],
+      "InputPortNames": [
+        [
+          "Signal"
+        ],
+        [
+          "C0",
+          "P0"
+        ],
+        [
+          "G0"
+        ],
+        [
+          "Signal",
+          "G0",
+          "C0\u002BP0"
+        ]
+      ],
+      "OutputPortNames": [
+        [
+          "Out"
+        ],
+        [
+          "Result"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Signal",
+          "C1"
+        ]
+      ],
+      "NodePositionsX": [
+        -4498.914294915192,
+        -4494.7558965929475,
+        -4496.861969073572,
+        -3966.66755223673
+      ],
+      "NodePositionsY": [
+        -2093.0292360364483,
+        -2019.4045001483394,
+        -1928.9859681787407,
+        -2093.362390330305
+      ],
+      "Wires": [
+        {
+          "FromNodeIndex": 2,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 3,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 0,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 3,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 1,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 3,
+          "ToPortIndex": 2
+        }
+      ],
+      "ExposedInputs": [
+        {
+          "NodeIndex": 0,
+          "PortIndex": 0,
+          "Name": "Signal"
+        },
+        {
+          "NodeIndex": 1,
+          "PortIndex": 0,
+          "Name": "C0"
+        },
+        {
+          "NodeIndex": 1,
+          "PortIndex": 1,
+          "Name": "P0"
+        },
+        {
+          "NodeIndex": 2,
+          "PortIndex": 0,
+          "Name": "G0"
+        }
+      ],
+      "ExposedOutputs": [
+        {
+          "NodeIndex": 3,
+          "PortIndex": 0,
+          "Name": "Signal"
+        },
+        {
+          "NodeIndex": 3,
+          "PortIndex": 1,
+          "Name": "C1"
+        }
+      ]
+    },
+    {
+      "TypeId": "4-Bit Adder (S)",
+      "NodeTypeIds": [
+        "Gate4 (S)",
+        "Gate3 (S)",
+        "Gate2 (S)",
+        "Gate1 (S)",
+        "XOR (S)",
+        "XOR (S)",
+        "IO",
+        "IO",
+        "IO",
+        "XOR (S)",
+        "IO",
+        "XOR (S)",
+        "IO",
+        "IO",
+        "XOR (S)",
+        "XOR (S)",
+        "IO",
+        "XOR (S)",
+        "XOR (S)",
+        "IO",
+        "IO",
+        "IO",
+        "IO",
+        "IO",
+        "AND (S)",
+        "AND (S)",
+        "AND (S)",
+        "AND (S)",
+        "IO",
+        "IO",
+        "IO",
+        "IO",
+        "IO",
+        "IO",
+        "IO",
+        "IO",
+        "IO",
+        "IO"
+      ],
+      "NodeNames": [
+        "Gate4 (S)",
+        "Gate3 (S)",
+        "Gate2 (S)",
+        "Gate1 (S)",
+        "XOR (S)",
+        "XOR (S)",
+        "IO",
+        "IO",
+        "IO",
+        "XOR (S)",
+        "IO",
+        "XOR (S)",
+        "IO",
+        "IO",
+        "XOR (S)",
+        "XOR (S)",
+        "IO",
+        "XOR (S)",
+        "XOR (S)",
+        "IO",
+        "IO",
+        "IO",
+        "IO",
+        "IO",
+        "AND (S)",
+        "AND (S)",
+        "AND (S)",
+        "AND (S)",
+        "IO",
+        "IO",
+        "IO",
+        "IO",
+        "IO",
+        "IO",
+        "IO",
+        "IO",
+        "IO",
+        "IO"
+      ],
+      "InputPortNames": [
+        [
+          "Signal",
+          "C0",
+          "P0",
+          "P1",
+          "P2",
+          "P3",
+          "G0",
+          "G1",
+          "G2",
+          "G3"
+        ],
+        [
+          "Signal",
+          "C0",
+          "P0",
+          "P1",
+          "P2",
+          "G0",
+          "G1",
+          "G2"
+        ],
+        [
+          "Signal",
+          "C0",
+          "P0",
+          "G0",
+          "P1",
+          "G1"
+        ],
+        [
+          "Signal",
+          "C0",
+          "P0",
+          "G0"
+        ],
+        [
+          "Signal",
+          "C0",
+          "P0"
+        ],
+        [
+          "Signal",
+          "A0",
+          "B0"
+        ],
+        [
+          "In"
+        ],
+        [
+          "C0"
+        ],
+        [
+          "In"
+        ],
+        [
+          "Signal",
+          "C1",
+          "P1"
+        ],
+        [
+          "In"
+        ],
+        [
+          "Signal",
+          "A1",
+          "B1"
+        ],
+        [
+          "In"
+        ],
+        [
+          "In"
+        ],
+        [
+          "Signal",
+          "A2",
+          "B2"
+        ],
+        [
+          "Signal",
+          "C2",
+          "P2"
+        ],
+        [
+          "In"
+        ],
+        [
+          "Signal",
+          "A3",
+          "B3"
+        ],
+        [
+          "Signal",
+          "C3",
+          "P3"
+        ],
+        [
+          "In"
+        ],
+        [
+          "In"
+        ],
+        [
+          "In"
+        ],
+        [
+          "In"
+        ],
+        [
+          "In"
+        ],
+        [
+          "Signal",
+          "A0",
+          "B0"
+        ],
+        [
+          "Signal",
+          "A1",
+          "B1"
+        ],
+        [
+          "Signal",
+          "A2",
+          "B2"
+        ],
+        [
+          "Signal",
+          "A3",
+          "B3"
+        ],
+        [
+          "A0"
+        ],
+        [
+          "B0"
+        ],
+        [
+          "Signal"
+        ],
+        [
+          "A1"
+        ],
+        [
+          "B1"
+        ],
+        [
+          "A2"
+        ],
+        [
+          "B2"
+        ],
+        [
+          "A3"
+        ],
+        [
+          "B3"
+        ],
+        [
+          "In"
+        ]
+      ],
+      "OutputPortNames": [
+        [
+          "Signal",
+          "C4"
+        ],
+        [
+          "Signal",
+          "C3"
+        ],
+        [
+          "Signal",
+          "C2"
+        ],
+        [
+          "Signal",
+          "C1"
+        ],
+        [
+          "Signal",
+          "S0"
+        ],
+        [
+          "Signal",
+          "P0"
+        ],
+        [
+          "S0"
+        ],
+        [
+          "C0"
+        ],
+        [
+          "P0"
+        ],
+        [
+          "Signal",
+          "S1"
+        ],
+        [
+          "P1"
+        ],
+        [
+          "Signal",
+          "P1"
+        ],
+        [
+          "S1"
+        ],
+        [
+          "G0"
+        ],
+        [
+          "Signal",
+          "P2"
+        ],
+        [
+          "Signal",
+          "S2"
+        ],
+        [
+          "P2"
+        ],
+        [
+          "Signal",
+          "P3"
+        ],
+        [
+          "Signal",
+          "S3"
+        ],
+        [
+          "S2"
+        ],
+        [
+          "S3"
+        ],
+        [
+          "G1"
+        ],
+        [
+          "G2"
+        ],
+        [
+          "G3"
+        ],
+        [
+          "Signal",
+          "G0"
+        ],
+        [
+          "Signal",
+          "G1"
+        ],
+        [
+          "Signal",
+          "G2"
+        ],
+        [
+          "Signal",
+          "G3"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "Out"
+        ],
+        [
+          "C4"
+        ]
+      ],
+      "NodePositionsX": [
+        -4457.1147767488765,
+        -4450.925687800384,
+        -4445.759252547384,
+        -4441.31792371897,
+        -4442.558406801783,
+        -4953.407848537405,
+        -3943.519050547268,
+        -5222.246043169904,
+        -4697.8414598395875,
+        -4197.314827933013,
+        -4701.347227007511,
+        -4952.882994821334,
+        -3939.98578368144,
+        -4702.550969985838,
+        -4963.211592143193,
+        -4200.232061540395,
+        -4716.73872182865,
+        -4957.653166277653,
+        -4201.656942570415,
+        -3946.0662026418327,
+        -3957.5328213420753,
+        -4707.467504463637,
+        -4718.203461354404,
+        -4713.808919971458,
+        -4953.161738181714,
+        -4963.89769507248,
+        -4961.569926107294,
+        -4959.242157142108,
+        -5214.684898516732,
+        -5230.108357221465,
+        -5216.88655641846,
+        -5223.026634711569,
+        -5229.135660090993,
+        -5222.5488334078855,
+        -5227.318129184605,
+        -5219.151888213817,
+        -5230.300946968619,
+        -3958.913251561519
+      ],
+      "NodePositionsY": [
+        -752.3173010241268,
+        -1005.2417698563149,
+        -1310.7203102936776,
+        -1670.6353746217465,
+        -1779.0453995037203,
+        -1657.0751507620612,
+        -1757.916048910456,
+        -1662.170351834131,
+        -1633.3269485583855,
+        -1670.3255387818945,
+        -1302.4771795913869,
+        -1325.208997440444,
+        -1651.763087214375,
+        -1527.1118266931549,
+        -1017.5177987385019,
+        -1314.1037845541894,
+        -995.472672734175,
+        -702.366100503137,
+        -1007.0992776969774,
+        -1291.2198941578702,
+        -986.8171544443982,
+        -1192.1740922537035,
+        -856.0724733316586,
+        -557.2151578526002,
+        -1539.2555741192316,
+        -1186.8595724408801,
+        -865.627455245122,
+        -585.1312949401304,
+        -1383.1241011370296,
+        -1013.6584803977988,
+        -1887.8558323790216,
+        -1310.2568783887632,
+        -936.3253204514162,
+        -1235.58713562366,
+        -862.1023260763116,
+        -1168.9076230380028,
+        -769.9037615783227,
+        -739.6645773258491
+      ],
+      "Wires": [
+        {
+          "FromNodeIndex": 4,
+          "FromPortIndex": 1,
+          "ToNodeIndex": 6,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 7,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 4,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 7,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 3,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 7,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 1,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 7,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 0,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 5,
+          "FromPortIndex": 1,
+          "ToNodeIndex": 8,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 8,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 4,
+          "ToPortIndex": 2
+        },
+        {
+          "FromNodeIndex": 8,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 3,
+          "ToPortIndex": 2
+        },
+        {
+          "FromNodeIndex": 11,
+          "FromPortIndex": 1,
+          "ToNodeIndex": 10,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 10,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 9,
+          "ToPortIndex": 2
+        },
+        {
+          "FromNodeIndex": 3,
+          "FromPortIndex": 1,
+          "ToNodeIndex": 9,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 9,
+          "FromPortIndex": 1,
+          "ToNodeIndex": 12,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 7,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 2,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 8,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 2,
+          "ToPortIndex": 2
+        },
+        {
+          "FromNodeIndex": 8,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 1,
+          "ToPortIndex": 2
+        },
+        {
+          "FromNodeIndex": 8,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 0,
+          "ToPortIndex": 2
+        },
+        {
+          "FromNodeIndex": 10,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 2,
+          "ToPortIndex": 4
+        },
+        {
+          "FromNodeIndex": 10,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 1,
+          "ToPortIndex": 3
+        },
+        {
+          "FromNodeIndex": 10,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 0,
+          "ToPortIndex": 3
+        },
+        {
+          "FromNodeIndex": 13,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 3,
+          "ToPortIndex": 3
+        },
+        {
+          "FromNodeIndex": 13,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 2,
+          "ToPortIndex": 3
+        },
+        {
+          "FromNodeIndex": 13,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 1,
+          "ToPortIndex": 5
+        },
+        {
+          "FromNodeIndex": 13,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 0,
+          "ToPortIndex": 6
+        },
+        {
+          "FromNodeIndex": 2,
+          "FromPortIndex": 1,
+          "ToNodeIndex": 15,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 14,
+          "FromPortIndex": 1,
+          "ToNodeIndex": 16,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 16,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 15,
+          "ToPortIndex": 2
+        },
+        {
+          "FromNodeIndex": 16,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 1,
+          "ToPortIndex": 4
+        },
+        {
+          "FromNodeIndex": 16,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 0,
+          "ToPortIndex": 4
+        },
+        {
+          "FromNodeIndex": 17,
+          "FromPortIndex": 1,
+          "ToNodeIndex": 0,
+          "ToPortIndex": 5
+        },
+        {
+          "FromNodeIndex": 1,
+          "FromPortIndex": 1,
+          "ToNodeIndex": 18,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 17,
+          "FromPortIndex": 1,
+          "ToNodeIndex": 18,
+          "ToPortIndex": 2
+        },
+        {
+          "FromNodeIndex": 18,
+          "FromPortIndex": 1,
+          "ToNodeIndex": 20,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 15,
+          "FromPortIndex": 1,
+          "ToNodeIndex": 19,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 3,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 9,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 21,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 2,
+          "ToPortIndex": 5
+        },
+        {
+          "FromNodeIndex": 21,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 1,
+          "ToPortIndex": 6
+        },
+        {
+          "FromNodeIndex": 21,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 0,
+          "ToPortIndex": 7
+        },
+        {
+          "FromNodeIndex": 24,
+          "FromPortIndex": 1,
+          "ToNodeIndex": 13,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 27,
+          "FromPortIndex": 1,
+          "ToNodeIndex": 23,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 23,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 0,
+          "ToPortIndex": 9
+        },
+        {
+          "FromNodeIndex": 25,
+          "FromPortIndex": 1,
+          "ToNodeIndex": 21,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 26,
+          "FromPortIndex": 1,
+          "ToNodeIndex": 22,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 22,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 1,
+          "ToPortIndex": 7
+        },
+        {
+          "FromNodeIndex": 22,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 0,
+          "ToPortIndex": 8
+        },
+        {
+          "FromNodeIndex": 5,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 24,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 24,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 11,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 11,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 25,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 25,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 14,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 14,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 26,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 26,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 17,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 17,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 27,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 27,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 0,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 0,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 1,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 1,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 18,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 18,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 2,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 2,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 15,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 15,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 3,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 9,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 4,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 30,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 5,
+          "ToPortIndex": 0
+        },
+        {
+          "FromNodeIndex": 28,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 5,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 28,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 24,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 29,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 5,
+          "ToPortIndex": 2
+        },
+        {
+          "FromNodeIndex": 29,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 24,
+          "ToPortIndex": 2
+        },
+        {
+          "FromNodeIndex": 31,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 11,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 31,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 25,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 32,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 11,
+          "ToPortIndex": 2
+        },
+        {
+          "FromNodeIndex": 32,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 25,
+          "ToPortIndex": 2
+        },
+        {
+          "FromNodeIndex": 33,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 14,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 33,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 26,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 34,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 14,
+          "ToPortIndex": 2
+        },
+        {
+          "FromNodeIndex": 34,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 26,
+          "ToPortIndex": 2
+        },
+        {
+          "FromNodeIndex": 35,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 17,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 35,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 27,
+          "ToPortIndex": 1
+        },
+        {
+          "FromNodeIndex": 36,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 17,
+          "ToPortIndex": 2
+        },
+        {
+          "FromNodeIndex": 36,
+          "FromPortIndex": 0,
+          "ToNodeIndex": 27,
+          "ToPortIndex": 2
+        },
+        {
+          "FromNodeIndex": 0,
+          "FromPortIndex": 1,
+          "ToNodeIndex": 37,
+          "ToPortIndex": 0
+        }
+      ],
+      "ExposedInputs": [
+        {
+          "NodeIndex": 30,
+          "PortIndex": 0,
+          "Name": "Signal"
+        },
+        {
+          "NodeIndex": 7,
+          "PortIndex": 0,
+          "Name": "C0"
+        },
+        {
+          "NodeIndex": 28,
+          "PortIndex": 0,
+          "Name": "A0"
+        },
+        {
+          "NodeIndex": 31,
+          "PortIndex": 0,
+          "Name": "A1"
+        },
+        {
+          "NodeIndex": 33,
+          "PortIndex": 0,
+          "Name": "A2"
+        },
+        {
+          "NodeIndex": 35,
+          "PortIndex": 0,
+          "Name": "A3"
+        },
+        {
+          "NodeIndex": 29,
+          "PortIndex": 0,
+          "Name": "B0"
+        },
+        {
+          "NodeIndex": 32,
+          "PortIndex": 0,
+          "Name": "B1"
+        },
+        {
+          "NodeIndex": 34,
+          "PortIndex": 0,
+          "Name": "B2"
+        },
+        {
+          "NodeIndex": 36,
+          "PortIndex": 0,
+          "Name": "B3"
+        }
+      ],
+      "ExposedOutputs": [
+        {
+          "NodeIndex": 4,
+          "PortIndex": 0,
+          "Name": "Signal"
+        },
+        {
+          "NodeIndex": 6,
+          "PortIndex": 0,
+          "Name": "S0"
+        },
+        {
+          "NodeIndex": 12,
+          "PortIndex": 0,
+          "Name": "S1"
+        },
+        {
+          "NodeIndex": 19,
+          "PortIndex": 0,
+          "Name": "S2"
+        },
+        {
+          "NodeIndex": 20,
+          "PortIndex": 0,
+          "Name": "S3"
+        },
+        {
+          "NodeIndex": 37,
+          "PortIndex": 0,
+          "Name": "C4"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="LogicFlowEngine.csproj" />
+  <Project Path="LogicFlowEditor\LogicFlowEditor.csproj" />
+</Solution>

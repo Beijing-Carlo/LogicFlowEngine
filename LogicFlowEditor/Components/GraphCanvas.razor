@@ -1,0 +1,445 @@
+@inject GraphStateService _State
+@inject SimulationService _Sim
+@inject IJSRuntime _JS
+@implements IDisposable
+@implements IAsyncDisposable
+
+@* Outer div accepts palette drag-and-drop *@
+<div class="canvas-wrapper">
+
+    <svg @ref="_svgRef"
+         class="graph-canvas"
+         style="@CanvasStyle"
+         tabindex="0"
+         @onmousedown="OnSvgMouseDown"
+         @onmousemove="OnMouseMove"
+         @onmouseup="OnSvgMouseUp"
+         @onmouseleave="OnMouseLeave"
+         @onkeydown="OnKeyDown"
+         @onwheel="OnWheel"
+         @onwheel:preventDefault="true"
+         @ondragover="OnDragOver"
+         @ondragover:preventDefault="true"
+         @ondrop="HandleDrop"
+         @ondrop:preventDefault="true"
+         @oncontextmenu:preventDefault="true">
+
+        <g transform="translate(@Px(_State.PanX),@Px(_State.PanY)) scale(@Px(_State.Zoom))">
+
+            @* ── Wires (skip if both endpoints are off-screen) ────── *@
+            @{ var _wpVp = GetViewportBounds(); }
+            @foreach (var wire in _State.Graph.Wires)
+            {
+                var fVm = _State.GetViewModel(wire.FromNodeId);
+                var tVm = _State.GetViewModel(wire.ToNodeId);
+                @if (fVm is not null && tVm is not null)
+                {
+                    var (sx, sy) = fVm.GetOutputPortPos(wire.FromPortIndex);
+                    var (ex, ey) = tVm.GetInputPortPos(wire.ToPortIndex);
+                    if (!IsPointVisible(sx, sy, _wpVp) && !IsPointVisible(ex, ey, _wpVp)) { continue; }
+                    var active   = _Sim.IsRunning &&
+                                   _Sim.GetLastOutput(wire.FromNodeId, wire.FromPortIndex) is bool bv && bv;
+                    <path @key="@($"w{wire.FromNodeId}-{wire.FromPortIndex}-{wire.ToNodeId}-{wire.ToPortIndex}")"
+                          d="@Bezier(sx, sy, ex, ey)"
+                          class="wire @(active ? "wire--active" : "")"
+                          fill="none" />
+                }
+            }
+
+            @* ── Wire preview while drawing ─────────────────────────── *@
+            @if (_mode == InteractionMode.DrawingWire)
+            {
+                var fVm = _State.GetViewModel(_pendingFromNode);
+                @if (fVm is not null)
+                {
+                    var (sx, sy) = fVm.GetOutputPortPos(_pendingFromPort);
+                    <path d="@Bezier(sx, sy, _wirePreviewX, _wirePreviewY)"
+                          class="wire wire--preview"
+                          fill="none" />
+                }
+            }
+
+            @* ── Nodes (virtualized — only visible ones) ────────────── *@
+            @{ var _vp = GetViewportBounds(); }
+            @foreach (var vm in _State.NodeViewModels)
+            {
+                if (!IsNodeVisible(vm, _vp)) continue;
+                <NodeView @key="vm.Node.Id"
+                          Vm="vm"
+                          IsSelected="_State.SelectedNodeIds.Contains(vm.Node.Id)"
+                          IsSimRunning="_Sim.IsRunning"
+                          GetOutputValue="(nid, pid) => _Sim.GetLastOutput(nid, pid)"
+                          OnHeaderMouseDown="e => HandleNodeHeaderMouseDown(vm.Node.Id, e)"
+                          OnOutputPortMouseDown="p => HandleOutputPortMouseDown(vm.Node.Id, p)"
+                          OnInputPortMouseUp="p => HandleInputPortMouseUp(vm.Node.Id, p)"
+                          OnInputPortRightClick="p => HandleInputPortRightClick(vm.Node.Id, p)"
+                          OnToggled="StateHasChanged"
+                          OnDoubleClick="() => HandleNodeDoubleClick(vm.Node.Id)" />
+            }
+
+            @* ── Selection rectangle ────────────────────────────────── *@
+            @if (_mode == InteractionMode.Selecting)
+            {
+                var rx = Math.Min(_selStartX, _selCurrX);
+                var ry = Math.Min(_selStartY, _selCurrY);
+                var rw = Math.Abs(_selCurrX  - _selStartX);
+                var rh = Math.Abs(_selCurrY  - _selStartY);
+                <rect x="@Px(rx)" y="@Px(ry)" width="@Px(rw)" height="@Px(rh)"
+                      class="selection-rect" />
+            }
+
+        </g>
+    </svg>
+</div>
+
+@code {
+
+    // ── Refs & cached SVG origin / size ────────────────────────────────────
+    private ElementReference _svgRef;
+    private double           _svgOffsetX, _svgOffsetY;
+    private double           _svgWidth, _svgHeight;
+
+    // ── Interaction state ─────────────────────────────────────────────────
+    private InteractionMode                       _mode = InteractionMode.Idle;
+
+    // Node drag
+    private double                                _dragStartCanvasX, _dragStartCanvasY;
+    private Dictionary<int, (double X, double Y)> _nodeOrigPos = new();
+
+    // Pan
+    private double _panStartX, _panStartY, _panClientStartX, _panClientStartY;
+
+    // Wire draw
+    private int    _pendingFromNode, _pendingFromPort;
+    private double _wirePreviewX, _wirePreviewY;
+
+    // Selection rect
+    private double _selStartX, _selStartY, _selCurrX, _selCurrY;
+
+    // ── CSS grid background that pans and zooms with the canvas ───────────
+    private string CanvasStyle =>
+        $"background-size: {Px(24 * _State.Zoom)}px {Px(24 * _State.Zoom)}px;" +
+        $"background-position: {Px(_State.PanX)}px {Px(_State.PanY)}px;";
+
+    // ── Lifecycle ─────────────────────────────────────────────────────────
+
+    protected override void OnInitialized()
+    {
+        _State.OnStateChanged += HandleStateChanged;
+        _Sim.OnTick           += HandleSimTick;
+    }
+
+    private DotNetObjectReference<GraphCanvas>? _selfRef;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await RefreshSvgOffsetAsync();
+            _selfRef = DotNetObjectReference.Create(this);
+            await _JS.InvokeVoidAsync("observeResize", _svgRef, _selfRef);
+        }
+    }
+
+    /// <summary>Called from JS when the SVG element is resized.</summary>
+    [JSInvokable]
+    public async Task OnSvgResized() => await RefreshSvgOffsetAsync();
+
+    private async Task RefreshSvgOffsetAsync()
+    {
+        var r        = await _JS.InvokeAsync<BoundingRect>("getBoundingRect", _svgRef);
+        _svgOffsetX  = r.X;
+        _svgOffsetY  = r.Y;
+        _svgWidth    = r.Width;
+        _svgHeight   = r.Height;
+    }
+
+    private void HandleStateChanged() => InvokeAsync(StateHasChanged);
+    private void HandleSimTick()      => InvokeAsync(StateHasChanged);
+
+    public void Dispose()
+    {
+        _State.OnStateChanged -= HandleStateChanged;
+        _Sim.OnTick           -= HandleSimTick;
+        _selfRef?.Dispose();
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        Dispose();
+        try { await _JS.InvokeVoidAsync("unobserveResize", _svgRef); } catch { }  
+    }
+
+    // ── Coordinate helpers ────────────────────────────────────────────────
+
+    /// <summary>Converts screen client coordinates to canvas-space coordinates.</summary>
+    private (double X, double Y) ToCanvas(double clientX, double clientY) =>
+        ((clientX - _svgOffsetX - _State.PanX) / _State.Zoom,
+         (clientY - _svgOffsetY - _State.PanY) / _State.Zoom);
+
+    private static string Px(double v) =>
+        v.ToString("F2", System.Globalization.CultureInfo.InvariantCulture);
+
+    /// <summary>Returns the visible canvas-space rectangle (minX, minY, maxX, maxY).</summary>
+    private (double MinX, double MinY, double MaxX, double MaxY) GetViewportBounds()
+    {
+        var z = _State.Zoom;
+        if (z <= 0 || _svgWidth <= 0) return (double.MinValue, double.MinValue, double.MaxValue, double.MaxValue);
+        var minX = -_State.PanX / z;
+        var minY = -_State.PanY / z;
+        var maxX = minX + _svgWidth / z;
+        var maxY = minY + _svgHeight / z;
+        return (minX, minY, maxX, maxY);
+    }
+
+    /// <summary>Checks whether a node VM overlaps the visible viewport (with margin).</summary>
+    private bool IsNodeVisible(NodeViewModel vm, (double MinX, double MinY, double MaxX, double MaxY) vp)
+    {
+        const double margin = 60;
+        return vm.X + NodeViewModel.Width + margin >= vp.MinX
+            && vm.X - margin                       <= vp.MaxX
+            && vm.Y + vm.Height + margin            >= vp.MinY
+            && vm.Y - margin                        <= vp.MaxY;
+    }
+
+    /// <summary>Checks whether a canvas-space point is within the viewport (with margin).</summary>
+    private static bool IsPointVisible(double x, double y, (double MinX, double MinY, double MaxX, double MaxY) vp, double margin = 200)
+    {
+        return x + margin >= vp.MinX && x - margin <= vp.MaxX
+            && y + margin >= vp.MinY && y - margin <= vp.MaxY;
+    }
+
+    /// <summary>Cubic bezier path string between two canvas-space points.</summary>
+    private static string Bezier(double sx, double sy, double ex, double ey)
+    {
+        var dx = Math.Clamp(Math.Abs(ex - sx) * 0.5, 40, 200);
+        return $"M{Px(sx)} {Px(sy)} C{Px(sx + dx)} {Px(sy)} {Px(ex - dx)} {Px(ey)} {Px(ex)} {Px(ey)}";
+    }
+
+    // ── SVG background mouse events ───────────────────────────────────────
+
+    private void OnSvgMouseDown(MouseEventArgs e)
+    {
+        if (_mode != InteractionMode.Idle) return;
+        var (cx, cy) = ToCanvas(e.ClientX, e.ClientY);
+
+        if (e.Button == 0)   // Left click → selection rect
+        {
+            _mode      = InteractionMode.Selecting;
+            _selStartX = _selCurrX = cx;
+            _selStartY = _selCurrY = cy;
+            if (!e.ShiftKey) _State.SelectedNodeIds.Clear();
+        }
+        else if (e.Button is 1 or 2)  // Middle / right → pan
+        {
+            _mode            = InteractionMode.Panning;
+            _panStartX       = _State.PanX;
+            _panStartY       = _State.PanY;
+            _panClientStartX = e.ClientX;
+            _panClientStartY = e.ClientY;
+        }
+    }
+
+    private void OnMouseMove(MouseEventArgs e)
+    {
+        switch (_mode)
+        {
+            case InteractionMode.DraggingNode:
+            {
+                var (cx, cy) = ToCanvas(e.ClientX, e.ClientY);
+                var dx = cx - _dragStartCanvasX;
+                var dy = cy - _dragStartCanvasY;
+                foreach (var (id, orig) in _nodeOrigPos)
+                {
+                    var vm = _State.GetViewModel(id);
+                    if (vm is not null) { vm.X = orig.X + dx; vm.Y = orig.Y + dy; }
+                }
+                StateHasChanged();
+                break;
+            }
+            case InteractionMode.DrawingWire:
+            {
+                (_wirePreviewX, _wirePreviewY) = ToCanvas(e.ClientX, e.ClientY);
+                StateHasChanged();
+                break;
+            }
+            case InteractionMode.Selecting:
+            {
+                (_selCurrX, _selCurrY) = ToCanvas(e.ClientX, e.ClientY);
+                StateHasChanged();
+                break;
+            }
+            case InteractionMode.Panning:
+            {
+                _State.PanX = _panStartX + (e.ClientX - _panClientStartX);
+                _State.PanY = _panStartY + (e.ClientY - _panClientStartY);
+                StateHasChanged();
+                break;
+            }
+        }
+    }
+
+    private void OnSvgMouseUp(MouseEventArgs e)
+    {
+        var selectionChanged = false;
+
+        if (_mode == InteractionMode.Selecting)
+        {
+            selectionChanged = true;
+
+            // Only select if the rect has a meaningful size (not just a stray click)
+            if (Math.Abs(_selCurrX - _selStartX) > 4 || Math.Abs(_selCurrY - _selStartY) > 4)
+            {
+                var minX = Math.Min(_selStartX, _selCurrX);
+                var minY = Math.Min(_selStartY, _selCurrY);
+                var maxX = Math.Max(_selStartX, _selCurrX);
+                var maxY = Math.Max(_selStartY, _selCurrY);
+
+                foreach (var vm in _State.NodeViewModels)
+                {
+                    if (vm.X < maxX && vm.X + NodeViewModel.Width > minX &&
+                        vm.Y < maxY && vm.Y + vm.Height            > minY)
+                        _State.SelectedNodeIds.Add(vm.Node.Id);
+                }
+            }
+        }
+        else if (_mode == InteractionMode.DrawingWire)
+        {
+            // Released on empty canvas — cancel the pending wire
+            _pendingFromNode = 0;
+        }
+
+        _mode = InteractionMode.Idle;
+
+        if (selectionChanged)
+            _State.NotifyStateChanged();
+        else
+            StateHasChanged();
+    }
+
+    private void OnMouseLeave(MouseEventArgs e) => OnSvgMouseUp(e);
+
+    private void OnWheel(WheelEventArgs e)
+    {
+        var factor  = e.DeltaY > 0 ? 0.9 : 1.1;
+        var newZoom = Math.Clamp(_State.Zoom * factor, 0.15, 4.0);
+        var svgX    = e.ClientX - _svgOffsetX;
+        var svgY    = e.ClientY - _svgOffsetY;
+        // Zoom towards the mouse cursor position
+        _State.PanX = svgX - (svgX - _State.PanX) * (newZoom / _State.Zoom);
+        _State.PanY = svgY - (svgY - _State.PanY) * (newZoom / _State.Zoom);
+        _State.Zoom = newZoom;
+        StateHasChanged();
+    }
+
+    private void OnKeyDown(KeyboardEventArgs e)
+    {
+        switch (e.Key)
+        {
+            case "Delete":
+            case "Backspace":
+                _State.RemoveSelectedNodes();
+                break;
+            case "c" when e.CtrlKey:
+                _State.Copy();
+                break;
+            case "v" when e.CtrlKey:
+                _State.Paste();
+                break;
+            case "a" when e.CtrlKey:
+                _State.SelectAll();
+                break;
+            case "Escape":
+                _mode            = InteractionMode.Idle;
+                _pendingFromNode = 0;
+                _State.SelectedNodeIds.Clear();
+                _State.NotifyStateChanged();
+                break;
+        }
+    }
+
+    // ── Callbacks from NodeView ───────────────────────────────────────────
+
+    private void HandleNodeHeaderMouseDown(int nodeId, MouseEventArgs e)
+    {
+        if (e.Button != 0) return;
+
+        // Toggle selection with Shift; otherwise make this node the sole selection
+        if (e.ShiftKey)
+        {
+            if (!_State.SelectedNodeIds.Remove(nodeId))
+                _State.SelectedNodeIds.Add(nodeId);
+        }
+        else if (!_State.SelectedNodeIds.Contains(nodeId))
+        {
+            _State.SelectedNodeIds.Clear();
+            _State.SelectedNodeIds.Add(nodeId);
+        }
+
+        // Begin dragging all selected nodes
+        var (cx, cy)     = ToCanvas(e.ClientX, e.ClientY);
+        _mode             = InteractionMode.DraggingNode;
+        _dragStartCanvasX = cx;
+        _dragStartCanvasY = cy;
+        _nodeOrigPos.Clear();
+        foreach (var id in _State.SelectedNodeIds)
+        {
+            var vm = _State.GetViewModel(id);
+            if (vm is not null) _nodeOrigPos[id] = (vm.X, vm.Y);
+        }
+        _State.NotifyStateChanged();
+    }
+
+    private void HandleOutputPortMouseDown(int nodeId, int portIndex)
+    {
+        _mode            = InteractionMode.DrawingWire;
+        _pendingFromNode = nodeId;
+        _pendingFromPort = portIndex;
+        var vm = _State.GetViewModel(nodeId);
+        if (vm is not null)
+            (_wirePreviewX, _wirePreviewY) = vm.GetOutputPortPos(portIndex);
+        StateHasChanged();
+    }
+
+    private void HandleInputPortMouseUp(int nodeId, int portIndex)
+    {
+        if (_mode != InteractionMode.DrawingWire || _pendingFromNode == 0) return;
+        _State.Graph.AddWire(new Wire(_pendingFromNode, _pendingFromPort, nodeId, portIndex));
+        _pendingFromNode = 0;
+        _mode            = InteractionMode.Idle;
+        StateHasChanged();
+    }
+
+    private void HandleInputPortRightClick(int nodeId, int portIndex)
+    {
+        var wire = _State.Graph.GetWireToInput(nodeId, portIndex);
+        if (wire is null) return;
+        _State.Graph.RemoveWire(wire.FromNodeId, wire.FromPortIndex, wire.ToNodeId, wire.ToPortIndex);
+        StateHasChanged();
+    }
+
+    private void HandleNodeDoubleClick(int nodeId)
+    {
+        if (_State.Graph.GetNode(nodeId) is CompositeNode)
+        {
+            _Sim.Stop();
+            _State.OpenComposite(nodeId);
+        }
+    }
+
+    // ── Palette drag-and-drop ─────────────────────────────────────────────
+
+    private void OnDragOver(DragEventArgs e) { /* preventDefault is applied via directive */ }
+
+    private void HandleDrop(DragEventArgs e)
+    {
+        if (_State.DraggedNodeType is null) return;
+        var (cx, cy) = ToCanvas(e.ClientX, e.ClientY);
+        _State.AddNode(_State.DraggedNodeType, cx, cy);
+        _State.DraggedNodeType = null;
+    }
+
+    // ── Private types ─────────────────────────────────────────────────────
+
+    private record BoundingRect(double X, double Y, double Width, double Height);
+}

@@ -1,0 +1,364 @@
+@* Pure SVG component — renders one node including ports and labels.
+   All interaction is delegated back to GraphCanvas via Action callbacks. *@
+@inject IJSRuntime JS
+
+<g transform="translate(@Px(Vm.X),@Px(Vm.Y))"
+   @onmousedown="HandleHeaderMouseDown"
+   @onmousedown:stopPropagation="true"
+   @ondblclick="HandleDoubleClick"
+   @ondblclick:stopPropagation="true">
+
+    @* ── Body ──────────────────────────────────────────────────────── *@
+    <rect x="0" y="0"
+          width="@Px(NodeViewModel.Width)" height="@Px(Vm.Height)"
+          rx="6" ry="6"
+          class="node-body @(IsSelected ? "node-body--selected" : "")" />
+
+    @* ── Header (top-rounded only via two-rect trick) ──────────────── *@
+    <rect x="0" y="0"
+          width="@Px(NodeViewModel.Width)" height="@Px(NodeViewModel.HeaderHeight)"
+          rx="6" ry="6"
+          class="node-header-rect" />
+    <rect x="0" y="@Px(NodeViewModel.HeaderHeight - 6)"
+          width="@Px(NodeViewModel.Width)" height="6"
+          class="node-header-rect" />
+
+    @* ── Title ─────────────────────────────────────────────────────── *@
+    <text x="@Px(NodeViewModel.Width / 2)"
+          y="@Px(NodeViewModel.HeaderHeight / 2)"
+          class="node-title"
+          text-anchor="middle"
+          dominant-baseline="middle">@Vm.Node.Name</text>
+
+    @* ── Input ports ───────────────────────────────────────────────── *@
+    @for (int i = 0; i < Vm.Node.InputPorts.Count; i++)
+    {
+        var idx = i;
+        var py  = NodeViewModel.HeaderHeight + idx * NodeViewModel.PortRowHeight + NodeViewModel.PortRowHeight / 2.0;
+
+        <g @key="@($"in{idx}")"
+           @onmouseup="() => OnInputPortMouseUp?.Invoke(idx)"
+           @oncontextmenu="() => OnInputPortRightClick?.Invoke(idx)"
+           @oncontextmenu:preventDefault="true"
+           @onmousedown:stopPropagation="true">
+            <circle cx="0" cy="@Px(py)" r="@Px(NodeViewModel.PortRadius)"
+                    class="port port--input" />
+            <g class="port-label-hit"
+               @ondblclick="() => StartInputPortRename(idx)"
+               @ondblclick:stopPropagation="true">
+                <rect x="@Px(NodeViewModel.PortRadius + 3)" y="@Px(py - 8)"
+                      width="@Px(NodeViewModel.Width / 2 - NodeViewModel.PortRadius)" height="16"
+                      fill="transparent" />
+                <text x="@Px(NodeViewModel.PortRadius + 5)" y="@Px(py)"
+                      class="port-label port-label--editable" dominant-baseline="middle">@Vm.Node.InputPorts[idx].Name</text>
+            </g>
+        </g>
+    }
+
+    @* ── Output ports ──────────────────────────────────────────────── *@
+    @for (int i = 0; i < Vm.Node.OutputPorts.Count; i++)
+    {
+        var idx    = i;
+        var py     = NodeViewModel.HeaderHeight + idx * NodeViewModel.PortRowHeight + NodeViewModel.PortRowHeight / 2.0;
+        var active = IsSimRunning && GetOutputValue?.Invoke(Vm.Node.Id, idx) is bool bv && bv;
+
+        <g @key="@($"out{idx}")"
+           @onmousedown="() => OnOutputPortMouseDown?.Invoke(idx)"
+           @onmousedown:stopPropagation="true">
+            <circle cx="@Px(NodeViewModel.Width)" cy="@Px(py)" r="@Px(NodeViewModel.PortRadius)"
+                    class="port port--output @(active ? "port--active" : "")" />
+            <g class="port-label-hit"
+               @ondblclick="() => StartOutputPortRename(idx)"
+               @ondblclick:stopPropagation="true">
+                <rect x="@Px(NodeViewModel.Width / 2 + NodeViewModel.PortRadius)" y="@Px(py - 8)"
+                      width="@Px(NodeViewModel.Width / 2 - NodeViewModel.PortRadius)" height="16"
+                      fill="transparent" />
+                <text x="@Px(NodeViewModel.Width - NodeViewModel.PortRadius - 5)" y="@Px(py)"
+                      class="port-label port-label--editable" text-anchor="end" dominant-baseline="middle">@Vm.Node.OutputPorts[idx].Name</text>
+            </g>
+        </g>
+    }
+
+    @* ── OnOff toggle button ───────────────────────────────────────── *@
+    @if (Vm.Node is OnOff onOff)
+    {
+        var toggleY = NodeViewModel.HeaderHeight + Math.Max(Vm.Node.InputPorts.Count, Vm.Node.OutputPorts.Count) * NodeViewModel.PortRowHeight + 12;
+        var isOn    = onOff.RuntimeValue;
+        <g class="toggle-btn"
+           @onclick="() => ToggleOnOff(onOff)"
+           @onclick:stopPropagation="true"
+           @onmousedown:stopPropagation="true">
+            <rect x="30" y="@Px(toggleY - 2)"
+                  width="100" height="22"
+                  rx="4" ry="4"
+                  class="toggle-bg @(isOn ? "toggle-bg--on" : "toggle-bg--off")" />
+            <text x="@Px(NodeViewModel.Width / 2)" y="@Px(toggleY + 9)"
+                  class="toggle-label"
+                  text-anchor="middle" dominant-baseline="middle">@(isOn ? "ON" : "OFF")</text>
+        </g>
+    }
+
+    @* ── Display 0/1 indicator ─────────────────────────────────────── *@
+    @if (Vm.Node is Display)
+    {
+        var dispY = NodeViewModel.HeaderHeight + Math.Max(Vm.Node.InputPorts.Count, Vm.Node.OutputPorts.Count) * NodeViewModel.PortRowHeight + 12;
+        var isHigh = IsSimRunning && GetOutputValue?.Invoke(Vm.Node.Id, 0) is bool dv && dv;
+        <g>
+            <rect x="30" y="@Px(dispY - 2)"
+                  width="100" height="22"
+                  rx="4" ry="4"
+                  class="display-bg @(isHigh ? "display-bg--1" : "display-bg--0")" />
+            <text x="@Px(NodeViewModel.Width / 2)" y="@Px(dispY + 9)"
+                  class="display-value"
+                  text-anchor="middle" dominant-baseline="middle">@(isHigh ? "1" : "0")</text>
+        </g>
+    }
+
+    @* ── Composite monitor strip (Display & OnOff indicators) ──────── *@
+    @if (Vm.Node is CompositeNode comp && comp.Monitors.Count > 0)
+    {
+        var monBaseY = NodeViewModel.HeaderHeight + Math.Max(Vm.Node.InputPorts.Count, Vm.Node.OutputPorts.Count) * NodeViewModel.PortRowHeight + 4;
+        @for (int mi = 0; mi < comp.Monitors.Count; mi++)
+        {
+            var mon = comp.Monitors[mi];
+            var my  = monBaseY + mi * NodeViewModel.MonitorRowHeight + NodeViewModel.MonitorRowHeight / 2.0;
+            var isOnOff = mon.NodeTypeId == OnOff.TypeId;
+
+            @if (isOnOff)
+            {
+                <g class="toggle-btn"
+                   @onclick="() => HandleMonitorToggle(comp, mon)"
+                   @onclick:stopPropagation="true"
+                   @onmousedown:stopPropagation="true">
+                    <rect x="8" y="@Px(my - 5)" width="10" height="10" rx="2" ry="2"
+                          class="monitor-indicator @(mon.Value ? "monitor-indicator--on" : "monitor-indicator--off")" />
+                    <text x="22" y="@Px(my)"
+                          class="monitor-label" dominant-baseline="middle">@mon.Label</text>
+                </g>
+            }
+            else
+            {
+                var midx = mi;
+                <g>
+                    <rect x="8" y="@Px(my - 5)" width="10" height="10" rx="2" ry="2"
+                          class="monitor-indicator @(mon.Value ? "monitor-indicator--on" : "monitor-indicator--off")" />
+                    <g class="port-label-hit"
+                       @ondblclick="() => StartMonitorRename(midx)"
+                       @ondblclick:stopPropagation="true">
+                        <rect x="22" y="@Px(my - 7)" width="@Px(NodeViewModel.Width - 30)" height="14"
+                              fill="transparent" />
+                        <text x="22" y="@Px(my)"
+                              class="monitor-label monitor-label--editable" dominant-baseline="middle">@mon.Label</text>
+                    </g>
+                </g>
+            }
+        }
+    }
+
+    @* ── Port rename overlay (rendered last = on top of all node content) ── *@
+    @if (_editingPortKey is not null)
+    {
+        var isInput = _editingPortKey.StartsWith("in");
+        var editIdx = isInput ? int.Parse(_editingPortKey.Substring(2)) : int.Parse(_editingPortKey.Substring(3));
+        var editPy  = NodeViewModel.HeaderHeight + editIdx * NodeViewModel.PortRowHeight + NodeViewModel.PortRowHeight / 2.0;
+        var foX     = isInput ? NodeViewModel.PortRadius + 3 : NodeViewModel.Width / 2;
+        var foW     = NodeViewModel.Width / 2 - NodeViewModel.PortRadius;
+        var portName = isInput ? Vm.Node.InputPorts[editIdx].Name : Vm.Node.OutputPorts[editIdx].Name;
+        <foreignObject x="@Px(foX)" y="@Px(editPy - 10)" width="@Px(foW)" height="22">
+            <input @ref="_editInputRef"
+                   xmlns="http://www.w3.org/1999/xhtml"
+                   class="port-label-input @(isInput ? "" : "port-label-input--end")"
+                   value="@portName"
+                   @onchange="HandleEditCommit"
+                   @onblur="CancelPortRename"
+                   @onkeydown="HandlePortEditKeyDown"
+                   @onkeydown:stopPropagation="true"
+                   @onmousedown:stopPropagation="true" />
+        </foreignObject>
+    }
+
+    @* ── Monitor rename overlay ────────────────────────────────────────── *@
+    @if (_editingMonitorIdx >= 0 && Vm.Node is CompositeNode compEdit && _editingMonitorIdx < compEdit.Monitors.Count)
+    {
+        var monBaseY = NodeViewModel.HeaderHeight + Math.Max(Vm.Node.InputPorts.Count, Vm.Node.OutputPorts.Count) * NodeViewModel.PortRowHeight + 4;
+        var monPy = monBaseY + _editingMonitorIdx * NodeViewModel.MonitorRowHeight + NodeViewModel.MonitorRowHeight / 2.0;
+        <foreignObject x="22" y="@Px(monPy - 10)" width="@Px(NodeViewModel.Width - 30)" height="22">
+            <input @ref="_editInputRef"
+                   xmlns="http://www.w3.org/1999/xhtml"
+                   class="port-label-input"
+                   value="@compEdit.Monitors[_editingMonitorIdx].Label"
+                   @onchange="HandleMonitorEditCommit"
+                   @onblur="CancelMonitorRename"
+                   @onkeydown="HandleMonitorEditKeyDown"
+                   @onkeydown:stopPropagation="true"
+                   @onmousedown:stopPropagation="true" />
+        </foreignObject>
+    }
+</g>
+
+@code {
+    [Parameter, EditorRequired] public NodeViewModel           Vm                   { get; set; } = default!;
+    [Parameter]                 public bool                    IsSelected           { get; set; }
+    [Parameter]                 public bool                    IsSimRunning         { get; set; }
+    [Parameter]                 public Func<int, int, object?>? GetOutputValue      { get; set; }
+    [Parameter]                 public Action<MouseEventArgs>? OnHeaderMouseDown    { get; set; }
+    [Parameter]                 public Action<int>?            OnOutputPortMouseDown{ get; set; }
+    [Parameter]                 public Action<int>?            OnInputPortMouseUp   { get; set; }
+    [Parameter]                 public Action<int>?            OnInputPortRightClick{ get; set; }
+    [Parameter]                 public Action?                 OnToggled            { get; set; }
+    [Parameter]                 public Action?                 OnDoubleClick        { get; set; }
+
+    private string? _editingPortKey;
+    private int _editingMonitorIdx = -1;
+    private bool _needsFocus;
+    private ElementReference _editInputRef;
+
+    // ── Change-detection state ────────────────────────────────────────────
+    private double _prevX, _prevY;
+    private bool _prevIsSelected, _prevIsSimRunning;
+    private string? _prevEditingPortKey;
+    private int _prevEditingMonitorIdx = -1;
+    private long _prevFingerprint;
+
+    /// <summary>
+    /// Computes a lightweight fingerprint of all output-port boolean values,
+    /// OnOff runtime state, and composite monitor values that affect rendering.
+    /// </summary>
+    private long ComputeOutputFingerprint()
+    {
+        long fp = 0;
+        int bit = 0;
+        if (IsSimRunning && GetOutputValue is not null)
+        {
+            for (int i = 0; i < Vm.Node.OutputPorts.Count && bit < 64; i++, bit++)
+            {
+                if (GetOutputValue.Invoke(Vm.Node.Id, i) is bool bv && bv)
+                    fp |= 1L << bit;
+            }
+        }
+        if (Vm.Node is OnOff onOff && onOff.RuntimeValue && bit < 64)
+            fp |= 1L << bit;
+        bit++;
+        if (Vm.Node is CompositeNode comp)
+        {
+            for (int i = 0; i < comp.Monitors.Count && bit < 64; i++, bit++)
+            {
+                if (comp.Monitors[i].Value)
+                    fp |= 1L << bit;
+            }
+        }
+        return fp;
+    }
+
+    protected override bool ShouldRender()
+    {
+        var fp = ComputeOutputFingerprint();
+        bool changed = Vm.X != _prevX
+                    || Vm.Y != _prevY
+                    || IsSelected != _prevIsSelected
+                    || IsSimRunning != _prevIsSimRunning
+                    || _editingPortKey != _prevEditingPortKey
+                    || _editingMonitorIdx != _prevEditingMonitorIdx
+                    || fp != _prevFingerprint;
+
+        _prevX = Vm.X;
+        _prevY = Vm.Y;
+        _prevIsSelected = IsSelected;
+        _prevIsSimRunning = IsSimRunning;
+        _prevEditingPortKey = _editingPortKey;
+        _prevEditingMonitorIdx = _editingMonitorIdx;
+        _prevFingerprint = fp;
+
+        return changed;
+    }
+
+    private void StartPortRename(string portKey)
+    {
+        _editingPortKey = portKey;
+        _editingMonitorIdx = -1;
+        _needsFocus = true;
+    }
+
+    private void StartInputPortRename(int idx) => StartPortRename($"in{idx}");
+    private void StartOutputPortRename(int idx) => StartPortRename($"out{idx}");
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (_needsFocus)
+        {
+            _needsFocus = false;
+            await JS.InvokeVoidAsync("focusAndSelectInput", _editInputRef);
+        }
+    }
+
+    private void HandleEditCommit(ChangeEventArgs e)
+    {
+        if (_editingPortKey is null) return;
+        var name = e.Value?.ToString();
+        if (string.IsNullOrWhiteSpace(name)) { _editingPortKey = null; return; }
+
+        var isInput = _editingPortKey.StartsWith("in");
+        var idx = isInput ? int.Parse(_editingPortKey.Substring(2)) : int.Parse(_editingPortKey.Substring(3));
+        if (isInput)
+            Vm.Node.InputPorts[idx].Name = name;
+        else
+            Vm.Node.OutputPorts[idx].Name = name;
+
+        _editingPortKey = null;
+    }
+
+    private void CancelPortRename() => _editingPortKey = null;
+
+    private void HandlePortEditKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key == "Escape")
+            _editingPortKey = null;
+    }
+
+    private void HandleHeaderMouseDown(MouseEventArgs e) => OnHeaderMouseDown?.Invoke(e);
+
+    private void StartMonitorRename(int monitorIdx)
+    {
+        _editingMonitorIdx = monitorIdx;
+        _editingPortKey = null;
+        _needsFocus = true;
+    }
+
+    private void HandleMonitorEditCommit(ChangeEventArgs e)
+    {
+        if (_editingMonitorIdx < 0 || Vm.Node is not CompositeNode c) return;
+        var name = e.Value?.ToString();
+        if (!string.IsNullOrWhiteSpace(name) && _editingMonitorIdx < c.Monitors.Count)
+            c.RenameMonitor(c.Monitors[_editingMonitorIdx], name);
+        _editingMonitorIdx = -1;
+    }
+
+    private void CancelMonitorRename() => _editingMonitorIdx = -1;
+
+    private void HandleMonitorEditKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key == "Escape")
+            _editingMonitorIdx = -1;
+    }
+
+    private void HandleMonitorToggle(CompositeNode comp, InternalMonitor mon)
+    {
+        comp.ToggleInternalOnOff(mon);
+        OnToggled?.Invoke();
+    }
+
+    private void HandleDoubleClick(MouseEventArgs e)
+    {
+        if (Vm.Node is CompositeNode)
+            OnDoubleClick?.Invoke();
+    }
+
+    private void ToggleOnOff(OnOff node)
+    {
+        node.RuntimeValue = !node.RuntimeValue;
+        OnToggled?.Invoke();
+    }
+
+    private static string Px(double v) =>
+        v.ToString("F2", System.Globalization.CultureInfo.InvariantCulture);
+}

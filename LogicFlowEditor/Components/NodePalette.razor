@@ -1,0 +1,36 @@
+@inject GraphStateService _State
+@implements IDisposable
+
+<div class="palette">
+    <div class="palette-title">Node Types</div>
+
+    @foreach (var typeId in NodeRegistry.RegisteredTypes.ToList())
+    {
+        var type = typeId;
+        var isComposite = _State.CompositeDefinitions.Any(d => d.TypeId == type);
+        <div class="palette-item"
+             draggable="true"
+             title="@(isComposite ? "Drag to create · Right-click to delete" : "Drag onto canvas to create")"
+             @ondragstart="() => _State.DraggedNodeType = type"
+             @oncontextmenu="() => { if (isComposite) _State.RemoveCompositeDefinition(type); }"
+             @oncontextmenu:preventDefault="true">
+            @typeId
+            @if (isComposite)
+            {
+                <span class="palette-delete" title="Delete composite"
+                      @onclick="() => _State.RemoveCompositeDefinition(type)"
+                      @onclick:stopPropagation="true">✕</span>
+            }
+        </div>
+    }
+</div>
+
+@code {
+    protected override void OnInitialized()
+        => _State.OnStateChanged += HandleStateChanged;
+
+    private void HandleStateChanged() => InvokeAsync(StateHasChanged);
+
+    public void Dispose()
+        => _State.OnStateChanged -= HandleStateChanged;
+}

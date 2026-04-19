@@ -1,0 +1,32 @@
+@inject GraphStateService _State
+@inject SimulationService _Sim
+@implements IDisposable
+
+<div class="sim-log">
+    <div class="sim-log-title">Simulation Log</div>
+    <div class="sim-log-entries" @ref="_logContainer">
+        @if (_State.Logs.Count == 0)
+        {
+            <div class="sim-log-empty">No output yet — press ▶ Run to start simulation.</div>
+        }
+        else
+        {
+            @foreach (var entry in _State.Logs)
+            {
+                <div class="sim-log-entry">@entry</div>
+            }
+        }
+    </div>
+</div>
+
+@code {
+    private ElementReference _logContainer;
+
+    protected override void OnInitialized()
+        => _Sim.OnTick += HandleTick;
+
+    private void HandleTick() => InvokeAsync(StateHasChanged);
+
+    public void Dispose()
+        => _Sim.OnTick -= HandleTick;
+}
